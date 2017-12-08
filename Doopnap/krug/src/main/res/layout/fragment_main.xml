@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chepel.krug.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           android:layout_weight="1">
+           <com.chepel.krug.KrugProgress
+               android:id="@+id/progrezz"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               android:background="#0fff"
+               android:padding="20dp"
+               app:exampleColor="#000"
+               app:exampleDrawable="@android:drawable/ic_menu_add"
+
+               app:exampleString="0%"
+               app:exampleDimension="24sp"/>
+
+       </LinearLayout>
+           <Button
+               android:id="@+id/btnAni"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="ani" />
+
+       </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
