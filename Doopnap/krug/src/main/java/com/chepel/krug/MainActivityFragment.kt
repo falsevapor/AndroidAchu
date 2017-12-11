@@ -28,7 +28,7 @@ class MainActivityFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         btnAni.setOnClickListener {
-            val animation = ObjectAnimator.ofFloat(progrezz, "progress", 0.0f, 89.0f)
+            val animation = ObjectAnimator.ofFloat(progrezz, "Value", 0.0f, 89.0f)
             animation.duration = 400 //in milliseconds
             animation.interpolator = FastOutSlowInInterpolator()
             animation.start()

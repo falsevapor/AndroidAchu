@@ -1,8 +1,18 @@
 <resources>
     <declare-styleable name="KrugProgress">
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
-        <attr name="exampleColor" format="color" />
-        <attr name="exampleDrawable" format="color|reference" />
+        <attr name="label" format="string" />
+        <attr name="labelSize" format="dimension" />
+        <attr name="labelColor" format="color" />
+        <attr name="valueSize" format="dimension" />
+        <attr name="valueColor" format="color" />
+        <attr name="value" format="float" />
+        <attr name="minV" format="float" />
+        <attr name="maxV" format="float" />
+        <attr name="startFrom" format="float" />
+        <attr name="sweep" format="float" />
+        <attr name="mercuryWidth" format="dimension" />
+        <attr name="trackWidth" format="dimension" />
+        <attr name="useAnimation" format="boolean" />
+        <attr name="maxAnimationDuration" format="integer" />
     </declare-styleable>
 </resources>

@@ -1,17 +1,25 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.chepel.krug"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app1="http://schemas.android.com/apk/res-auto">
 
     <com.chepel.krug.KrugProgress
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
 
-        android:background="#fff"
+        android:background="#0fff"
         android:padding="20dp"
-        app:exampleColor="#33b5e5"
-        app:exampleDimension="24sp"
-        app:exampleDrawable="@android:drawable/ic_menu_add"
-        app:exampleString="Hello, KrugProgress" />
+        app:labelColor="#33b5e5"
+        app:labelSize="24sp"
+        app:label="100%"
+        app:startFrom="-90.0"
+        app:sweep="360.0"
+        app:mercuryWidth="10dp"
+        app:trackWidth="20dp"
+        app:value="200"
+        app:minV="0"
+        app:maxV="100"
+        />
 
 </FrameLayout>

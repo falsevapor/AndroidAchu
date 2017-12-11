@@ -23,11 +23,14 @@
                android:layout_height="200dp"
                android:background="#0fff"
                android:padding="20dp"
-               app:exampleColor="#000"
-               app:exampleDrawable="@android:drawable/ic_menu_add"
-
-               app:exampleString="0%"
-               app:exampleDimension="24sp"/>
+               app:labelColor="#000"
+               app:startFrom="135.0"
+               app:sweep="270.0"
+               app:mercuryWidth="15dp"
+               app:trackWidth="15dp"
+               app:value="200"
+               app:label="100%"
+               app:labelSize="24sp"/>
 
        </LinearLayout>
            <Button
