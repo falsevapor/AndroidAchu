@@ -10,36 +10,100 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="2">
+        android:orientation="vertical">
        <LinearLayout
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
+           android:layout_height="wrap_content"
            android:orientation="horizontal"
-           android:layout_weight="1">
+           android:weightSum="2">
            <com.chepel.krug.KrugProgress
                android:id="@+id/progrezz"
-               android:layout_width="200dp"
-               android:layout_height="200dp"
+               android:layout_width="match_parent"
+               android:layout_height="300dp"
                android:background="#0fff"
                android:padding="20dp"
-               app:labelColor="#000"
                app:startFrom="135.0"
                app:sweep="270.0"
                app:mercuryWidth="15dp"
                app:trackWidth="15dp"
-               app:value="200"
-               app:label="100%"
-               app:labelSize="24sp"/>
-
+               app:labelColor="#000"
+               app:labelSize="24sp"
+               android:layout_weight="1"
+               app:valueColor="@android:color/holo_red_dark"
+               app:valueSize="14sp"
+               app:value="50"
+               app:minV="50"
+               app:maxV="100"
+               app:trackColor="#200000ff"
+               app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+               app:heightSameAsWidth="true"
+               />
+           <com.chepel.krug.KrugProgress
+               android:id="@+id/progrezz2"
+               android:layout_width="match_parent"
+               android:layout_height="300dp"
+               android:background="#0fff"
+               android:padding="20dp"
+               app:startFrom="-90.0"
+               app:sweep="360.0"
+               app:mercuryWidth="15dp"
+               app:trackWidth="15dp"
+               app:labelColor="#000"
+               app:labelSize="24sp"
+               android:layout_weight="1"
+               app:valueColor="@android:color/holo_red_dark"
+               app:valueSize="14sp"
+               app:value="0"
+               app:minV="0"
+               app:maxV="100"
+               app:trackColor="#200000ff"
+               app:valueSuffix="%"
+               app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+               app:heightSameAsWidth="true"
+               />
        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
            <Button
-               android:id="@+id/btnAni"
+               android:id="@+id/btnAni0"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
-               android:text="ani" />
+               android:layout_margin="5dp"
+               android:text="1" />
+            <Button
+                android:id="@+id/btnAni38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="2" />
 
+            <Button
+                android:id="@+id/btnAni62"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="3" />
+            <Button
+                android:id="@+id/btnAni89"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="4" />
+            <Button
+                android:id="@+id/btnAni100"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="5" />
        </LinearLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

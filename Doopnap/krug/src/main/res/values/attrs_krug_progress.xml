@@ -6,13 +6,20 @@
         <attr name="valueSize" format="dimension" />
         <attr name="valueColor" format="color" />
         <attr name="value" format="float" />
+        <attr name="valuePrefix" format="string" />
+        <attr name="valueSuffix" format="string" />
         <attr name="minV" format="float" />
         <attr name="maxV" format="float" />
         <attr name="startFrom" format="float" />
         <attr name="sweep" format="float" />
         <attr name="mercuryWidth" format="dimension" />
         <attr name="trackWidth" format="dimension" />
+        <attr name="trackColor" format="color" />
         <attr name="useAnimation" format="boolean" />
         <attr name="maxAnimationDuration" format="integer" />
+        <attr name="showMinValue" format="boolean" />
+        <attr name="valueColors" format="string" />
+        <attr name="widthSameAsHeight" format="boolean" />
+        <attr name="heightSameAsWidth" format="boolean" />
     </declare-styleable>
 </resources>

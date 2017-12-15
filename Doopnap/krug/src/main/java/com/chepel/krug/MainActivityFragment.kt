@@ -27,11 +27,27 @@ class MainActivityFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        btnAni.setOnClickListener {
-            val animation = ObjectAnimator.ofFloat(progrezz, "Value", 0.0f, 89.0f)
-            animation.duration = 400 //in milliseconds
-            animation.interpolator = FastOutSlowInInterpolator()
-            animation.start()
+        progrezz.value = 67f
+        progrezz2.value = 89f
+        btnAni0.setOnClickListener {
+            progrezz.value = 50f
+            progrezz2.value = 0f
+        }
+        btnAni38.setOnClickListener {
+            progrezz.value = 60f
+            progrezz2.value = 25f
+        }
+        btnAni62.setOnClickListener {
+            progrezz.value = 75f
+            progrezz2.value = 50f
+        }
+        btnAni89.setOnClickListener {
+            progrezz.value = 90f
+            progrezz2.value = 75f
+        }
+        btnAni100.setOnClickListener {
+            progrezz.value = 100f
+            progrezz2.value = 100f
         }
     }
 
