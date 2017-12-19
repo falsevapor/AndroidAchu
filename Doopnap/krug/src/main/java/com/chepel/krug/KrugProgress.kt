@@ -615,6 +615,7 @@ class KrugProgress : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+
         if (introsteps.tointro == intro)
         {
             intro = introsteps.wake
@@ -629,12 +630,12 @@ class KrugProgress : View {
 
         canvas.drawArc(rectTrack, startFromF, sweepF, false, paintTrack)
 
-        if (introsteps.done == intro)
-        {
-            canvas.drawText(mLabelString, paddingL + (contentW - mTextWidth) / 2, paddingT + (contentH + mTextHeight) / 2, mTextPaint)
 
-            canvas.drawArc(rectMircury, startFromF, valueSweepF, false, paintMercury)
-        }
+        if (introsteps.done != intro)
+            return
+
+        canvas.drawText(mLabelString, paddingL + (contentW - mTextWidth) / 2, paddingT + (contentH + mTextHeight) / 2, mTextPaint)
+        canvas.drawArc(rectMircury, startFromF, valueSweepF, false, paintMercury)
     }
 }
 
