@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+    <color name="achuGreen">#25B559</color>
+    <color name="achuLightGreen">#70D79B</color>
+
+    <color name="colorPrimary">#00ffffff</color>
+    <color name="colorPrimaryDark">#00ffffff</color>
     <color name="colorAccent">#FF4081</color>
--->
-    <color name="colorPrimary">#25B559</color>
-    <color name="colorPrimaryDark">#25B559</color>
-    <!--<color name="colorPrimaryDark">#70D79B</color>-->
-    <color name="colorAccent">#FF3366</color>
+    <color name="textColorPrimary">#404040</color>
+    <color name="textColorSecondary">#808080</color>
+
+    <color name="toolbarTextColorPrimary">#ff101030</color>
+    <color name="toolbarTextColorSecondary">#606080</color>
 
     <color name="colorSecondary">#72C797</color>
 
-    <color name="colorText">#FFFF</color>
-    <color name="colorTextSecondary">#AAFFFFFF</color>
+    <color name="colorText">#ff000000</color>
+    <color name="colorTextSecondary">#1D1D26</color>
     <color name="colorTextDark">#1D1D26</color>
     <color name="colorNext">#5ED28F</color>
 
@@ -22,4 +25,5 @@
     <color name="colorAdvertisement">#FF70C696</color>
 
     <color name="colorDatePickerControlActivated">#EC407A</color>
+
 </resources>

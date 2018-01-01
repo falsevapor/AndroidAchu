@@ -1,0 +1,57 @@
+<resources>
+    <declare-styleable name="GaugeProgress">
+        <attr name="label" format="string" />
+        <attr name="labelSize" format="dimension" />
+        <attr name="labelColor" format="color" />
+        <attr name="labelAlignment">
+            <flag name="top" value="1" />
+            <flag name="bottom" value="2" />
+            <flag name="start" value="4" />
+            <flag name="end" value="8" />
+            <flag name="center" value="16" />
+        </attr>
+
+        <attr name="subLabel" format="string" />
+        <attr name="subLabelSize" format="dimension" />
+        <attr name="subLabelColor" format="color" />
+        <attr name="subLabelAlignment">
+            <flag name="top" value="1" />
+            <flag name="bottom" value="2" />
+            <flag name="start" value="4" />
+            <flag name="end" value="8" />
+            <flag name="center" value="16" />
+        </attr>
+
+        <!--<attr name="valueSize" format="dimension" />-->
+        <attr name="valueColor" format="color" />
+        <attr name="valueColors" format="string" />
+        <attr name="negativeValueColor" format="color" />
+
+        <attr name="value" format="float" />
+
+        <attr name="valuePrefix" format="string" />
+        <attr name="valuePrefixSize" format="dimension" />
+        <attr name="valuePrefixColor" format="color" />
+
+        <attr name="valueSuffix" format="string" />
+        <attr name="valueSuffixSize" format="dimension" />
+        <attr name="valueSuffixColor" format="color" />
+
+        <attr name="minV" format="float" />
+        <attr name="maxV" format="float" />
+        <attr name="startFrom" format="float" />
+        <attr name="sweep" format="float" />
+        <attr name="mercuryWidth" format="dimension" />
+        <attr name="trackWidth" format="dimension" />
+        <attr name="trackColor" format="color" />
+        <attr name="trackAlpha" format="integer" />
+        <attr name="negativeTrackColor" format="color" />
+        <attr name="animateValue" format="boolean" />
+        <attr name="intro" format="boolean" />
+        <attr name="maxAnimationDuration" format="integer" />
+        <attr name="showMinValue" format="boolean" />
+        <attr name="showPlus" format="boolean" />
+        <attr name="widthSameAsHeight" format="boolean" />
+        <attr name="heightSameAsWidth" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chepel.krug.DashboardFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/main_background">
+    <!---->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/topContainer"
+        android:padding="10dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline50V"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline50H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline100H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_tl"
+            style="@style/DashBoardCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline50H"
+            app:layout_constraintEnd_toStartOf="@+id/guideline50V"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sickness Risk" />
+
+                <com.chepel.krug.GaugeProgress
+                    android:id="@+id/progress_tl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:padding="20dp"
+                    app:animateValue="true"
+                    app:heightSameAsWidth="false"
+                    app:intro="true"
+                    app:labelSize="24sp"
+                    app:labelAlignment="center|bottom"
+                    app:subLabelSize="14sp"
+                    app:subLabel="probability"
+                    app:subLabelColor="@color/textColorSecondary"
+                    app:subLabelAlignment="center|bottom"
+                    app:valueSuffix="%"
+                    app:valueSuffixSize="14sp"
+                    app:valueSuffixColor="@color/textColorSecondary"
+                    app:maxV="100"
+                    app:mercuryWidth="15dp"
+                    app:minV="0"
+                    app:startFrom="135.0"
+                    app:sweep="270.0"
+                    app:trackWidth="15dp"
+                    app:value="0"
+                    app:valueColor="@android:color/holo_red_dark"
+                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+                    tools:animateValue="false"
+                    tools:intro="false"
+                    />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_tr"
+            style="@style/DashBoardCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline50H"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline50V"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$leep Bank" />
+
+                <com.chepel.krug.GaugeProgress
+                    android:id="@+id/progress_tr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:padding="20dp"
+                    app:animateValue="true"
+                    app:heightSameAsWidth="false"
+                    app:intro="true"
+                    app:labelSize="24sp"
+                    app:labelAlignment="center|bottom"
+                    app:subLabelSize="14sp"
+                    app:subLabel="hours"
+                    app:subLabelColor="@color/textColorSecondary"
+                    app:subLabelAlignment="center|bottom"
+                    app:maxV="12"
+                    app:mercuryWidth="15dp"
+                    app:minV="-12"
+                    app:startFrom="135.0"
+                    app:sweep="270.0"
+                    app:trackWidth="15dp"
+                    app:value="0"
+                    app:valueColor="#4CAF50"
+                    app:negativeValueColor="#F44336"
+                    app:trackColor="#204CAF50"
+                    app:trackAlpha="32"
+                    app:negativeTrackColor="#20F44336"
+                    app:showPlus="true"
+                    tools:animateValue="false"
+                    tools:intro="false"
+                    />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_bl"
+            style="@style/DashBoardCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline100H"
+            app:layout_constraintEnd_toStartOf="@+id/guideline50V"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline50H">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Optimal Health Zone" />
+
+                <com.chepel.krug.GaugeProgress
+                    android:id="@+id/progress_bl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:padding="20dp"
+                    app:animateValue="true"
+                    app:heightSameAsWidth="false"
+                    app:intro="true"
+                    app:labelSize="24sp"
+                    app:labelAlignment="center|bottom"
+                    app:valueSuffix="%"
+                    app:valueSuffixSize="14sp"
+                    app:valueSuffixColor="@color/textColorSecondary"
+                    app:subLabelSize="14sp"
+                    app:subLabel="match"
+                    app:subLabelColor="@color/textColorSecondary"
+                    app:subLabelAlignment="center|bottom"
+                    app:maxV="100"
+                    app:mercuryWidth="15dp"
+                    app:minV="0"
+                    app:startFrom="135.0"
+                    app:sweep="270.0"
+                    app:trackWidth="15dp"
+                    app:value="0"
+                    app:valueColor="@android:color/holo_red_dark"
+                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+                    tools:animateValue="false"
+                    tools:intro="false"
+                    />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_br"
+            style="@style/DashBoardCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/guideline100H"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline50V"
+            app:layout_constraintTop_toTopOf="@+id/guideline50H">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rewards progress" />
+
+                <com.chepel.krug.GaugeProgress
+                    android:id="@+id/progress_br"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:padding="20dp"
+                    app:animateValue="true"
+                    app:heightSameAsWidth="false"
+                    app:intro="true"
+                    app:labelSize="24sp"
+                    app:labelAlignment="center"
+                    app:subLabelSize="14sp"
+                    app:subLabel="complete"
+                    app:subLabelColor="@color/textColorSecondary"
+                    app:subLabelAlignment="center"
+                    app:maxV="100"
+                    app:mercuryWidth="15dp"
+                    app:minV="0"
+                    app:startFrom="-90.0"
+                    app:sweep="360.0"
+                    app:trackWidth="15dp"
+                    app:value="0"
+                    app:valueColor="@android:color/holo_red_dark"
+                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+                    app:valueSuffix="%"
+                    app:valueSuffixSize="14sp"
+                    app:valueSuffixColor="@color/textColorSecondary"
+                    tools:animateValue="false"
+                    tools:intro="false"
+                    />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline100H">
+
+            <Button
+                android:id="@+id/btnAni0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/btnAni38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/btnAni62"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/btnAni89"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/btnAni100"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:text="5" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardTL"
+            style="@style/DashBoardCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible"
+            >
+            <include layout="@layout/sickness_prediction"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardTR"
+            style="@style/DashBoardCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible"
+            >
+            <include layout="@layout/sleep_bank"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardBL"
+            style="@style/DashBoardCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible"
+            >
+            <include layout="@layout/health_zone"/>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardBR"
+            style="@style/DashBoardCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible"
+            >
+            <include layout="@layout/rewards_tracker"/>
+        </android.support.v7.widget.CardView>
+
+</FrameLayout>

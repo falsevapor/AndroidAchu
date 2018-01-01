@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/DashBoardCardTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Optimal Health Zone" />
+
+    <com.chepel.krug.GaugeProgress
+        android:id="@+id/progressBL"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#0fff"
+        android:padding="20dp"
+        app:animateValue="false"
+        app:heightSameAsWidth="false"
+        app:intro="false"
+        app:labelSize="24sp"
+        app:labelAlignment="center|bottom"
+        app:valueSuffix="%"
+        app:valueSuffixSize="14sp"
+        app:valueSuffixColor="@color/textColorSecondary"
+        app:subLabelSize="14sp"
+        app:subLabel="match"
+        app:subLabelColor="@color/textColorSecondary"
+        app:subLabelAlignment="center|bottom"
+        app:maxV="100"
+        app:mercuryWidth="15dp"
+        app:minV="0"
+        app:startFrom="135.0"
+        app:sweep="270.0"
+        app:trackWidth="15dp"
+        app:value="0"
+        app:valueColor="@android:color/holo_red_dark"
+        app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
+        tools:animateValue="false"
+        tools:intro="false"
+        />
+
+</LinearLayout>

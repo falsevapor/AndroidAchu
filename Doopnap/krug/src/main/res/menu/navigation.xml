@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_tips"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_tips"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_offers"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_offers"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_radar"
+        android:icon="@drawable/ic_radar"
+        android:title="@string/title_Radar"
+        app:showAsAction="always|withText" />
+
+</menu>
