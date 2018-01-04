@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1060705629177",
+    "project_id": "aachuapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060705629177:android:fe8dc26c782cc907",
+        "android_client_info": {
+          "package_name": "com.chepel.aachuapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060705629177-7nv3gce7h5m62332qk0irvqcpl5evqcu.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1060705629177-kpiq3n3fo2jh17v5q7dtk9pjoc89gof2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chepel.aachuapp",
+            "certificate_hash": "2ad2c7084e465fe8ba029d3a7d6232eb6a6381ba"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7GROX0WvMFqbdE-zeXsS2zsv9S7xeURw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
