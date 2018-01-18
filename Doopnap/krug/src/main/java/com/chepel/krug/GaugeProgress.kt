@@ -242,7 +242,7 @@ class GaugeProgress : View {
 
     class ALabel
     {
-        val paint = TextPaint()
+        private val paint = TextPaint()
         var x:Float = 0f
         var y:Float = 0f
         var width:Float = 0f
@@ -642,7 +642,7 @@ class GaugeProgress : View {
             invalidateTextPaintAndMeasurements(false)
         }
 
-    fun calcZero()
+    private fun calcZero()
     {
         zeroF = startFromF
         zeroSweep = 0f // all positive > zero at beginning
@@ -778,10 +778,11 @@ class GaugeProgress : View {
             invalidate()
         }
 
-    fun animTrack()
+    private fun animTrack()
     {
         val anims = AnimatorSet()
         val a = ObjectAnimator.ofFloat(this, "wake", 1f, 0f)
+        a.startDelay = 250
         a.duration = 250
         //a.interpolator = LinearOutSlowInInterpolator()
         a.interpolator = FastOutSlowInInterpolator()
@@ -799,6 +800,7 @@ class GaugeProgress : View {
             }
         })
         val c = ValueAnimator.ofInt(0,255)
+        c.startDelay = 250
         c.duration = 250
         c.interpolator = LinearOutSlowInInterpolator()
         //c.interpolator = FastOutLinearInInterpolator()
@@ -848,10 +850,6 @@ class GaugeProgress : View {
             layoutParams = lp
             postInvalidate()
         }
-    }
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     override fun onDraw(canvas: Canvas) {

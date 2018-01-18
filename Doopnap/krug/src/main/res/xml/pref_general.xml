@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+        <Preference android:title="@string/pref_title_my_info">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetPackage="com.chepel.krug"
+                android:targetClass="com.chepel.krug.MyInfoActivity"/>
+        </Preference>
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/opts_use_location"
+            android:summary="@string/pref_use_location_summary"
+            android:title="@string/pref_title_use_location" />
+
+        <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+             dismiss it. -->
+        <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/pref_units_titles"
+            android:entryValues="@array/pref_units_values"
+            android:key="@string/opts_units"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_units" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Account">
+        <Preference android:title="Signed in as" android:key="@string/opts_uid"/>
+        <Preference android:title="Authentication method" android:key="@string/opts_authenticator"/>
+        <Preference android:title="Sign out" android:summary="Keep my data" android:key="sign_out"/>
+        <Preference android:title="Forget me" android:summary="As if I was never here. Data on server will be kept" android:key="forget_me"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

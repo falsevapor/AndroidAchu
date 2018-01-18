@@ -8,9 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/toolbarTextColorPrimary</item>
         <item name="android:textColorSecondary">@color/toolbarTextColorSecondary</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
+        <!--<item name="android:textColor">@color/textColorPrimary</item>-->
         <!--<item name="android:statusBarColor">@color/status_bar_color</item>-->
         <item name="android:windowLightStatusBar">true</item>
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <item name="colorControlActivated">@color/achuGreen</item>
+        <item name="android:colorEdgeEffect">@color/achuGreen</item>
+    </style>
+
+    <style name="CalibrateTheme" parent="AppTheme">
+        <item name="colorControlNormal">@color/toolbarTextColorPrimary</item>
+    </style>
+
+    <style name="MyInfoTheme" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/achuGreen</item>
+        <item name="android:textColorSecondary">@color/achuGreen</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -20,11 +32,15 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
 
     <style name="DashBoardCard">
         <item name="android:layout_margin">10dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">5dp</item>
+    </style>
+
+    <style name="ListCard">
         <item name="cardUseCompatPadding">true</item>
         <item name="cardCornerRadius">5dp</item>
     </style>
@@ -38,11 +54,35 @@
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">2</item>
         <item name="android:shadowRadius">10</item>
-        <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="BottomToolBarButton" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/clr_bottom_nav</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="akey" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+
+    </style>
+
+    <style name="avalue" parent="akey">
+        <item name="android:textColor">@color/achuGreen</item>
+    </style>
 </resources>

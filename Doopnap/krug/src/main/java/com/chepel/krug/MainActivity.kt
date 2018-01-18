@@ -1,5 +1,7 @@
 package com.chepel.krug
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -8,13 +10,21 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.*
+import android.widget.Button
+import com.chepel.krug.dummy.CouponsContent
+import com.chepel.krug.dummy.TipsContent
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity :
+        AppCompatActivity(),
+        RadarFragment.OnRadarInteractionListener,
+        RewardsFragment.OnRewardsInteractionListener,
+        CouponFragment.OnCouponInteractionListener,
+        TipFragment.OnTipsInteractionListener
+{
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
      * fragments for each of the sections. We use a
@@ -25,6 +35,15 @@ class MainActivity : AppCompatActivity() {
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
+    private val dash = DashboardFragment()
+    private val radar = RadarFragment()
+    private val tips = TipFragment()
+    private val offers = CouponFragment()
+    private val rewards = RewardsFragment()
+
+    //val btns = arrayOf(btn_dash, btn_radar, btn_tips,  btn_offers, btn_rewards)
+
+    /*
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_dashboard -> {
@@ -43,19 +62,42 @@ class MainActivity : AppCompatActivity() {
                 viewpager.currentItem = 3
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_rewards -> {
+                viewpager.currentItem = 3
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }
+    */
 
+    var btns = mutableListOf<Button>()
+    val titles = intArrayOf(R.string.title_dashboard, R.string.title_radar, R.string.title_tips, R.string.title_offers, R.string.title_rewards)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val finish = intent.getBooleanExtra("sign_out", false)
+        if (finish)
+        {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setHomeButtonEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        btn_dash.isSelected = true
+
+        btn_dash.setOnClickListener { onTab(0) }
+        btn_radar.setOnClickListener { onTab(1) }
+        btn_tips.setOnClickListener { onTab(2) }
+        btn_offers.setOnClickListener { onTab(3) }
+        btn_rewards.setOnClickListener { onTab(4) }
+
+        //navigation1.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
 
         // Create the adapter that will return a fragment for each of the three
@@ -73,11 +115,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-
-                navigation.selectedItemId = navigation.menu.getItem(position).itemId
+                selectBottomTabButton(position)
             }
         })
-
 
         /*
         fab.setOnClickListener { view ->
@@ -85,9 +125,34 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
         */
-
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        btns.add(btn_dash)
+        btns.add(btn_radar)
+        btns.add(btn_tips)
+        btns.add(btn_offers)
+        btns.add(btn_rewards)
+    }
+
+    fun selectBottomTabButton(n:Int)
+    {
+        if (0 > n || btns.size <= n)
+            return
+        for (btn in btns)
+            btn.isSelected = false
+        btns[n].isSelected = true
+
+        the_title.text = getString(titles[n])
+    }
+
+    fun onTab(n:Int)
+    {
+        selectBottomTabButton(n)
+        viewpager.currentItem = n
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -95,16 +160,54 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        if (item.itemId == R.id.action_calibrate)
+        {
+            return onShowCalibration()
+        }
+        if (item.itemId == android.R.id.home)
+        {
+            return onShowSettings()
+        }
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        return when (item.itemId) {
-            R.id.action_calibrate -> true
-            R.id.home -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun onShowSettings():Boolean
+    {
+        val intent = Intent(this,  SettingsActivity::class.java)
+        intent.putExtra("Settings extra", "Logeen sukses")
+        startActivity(intent)
+
+        return true
+    }
+
+    fun onShowCalibration():Boolean
+    {
+        val intent = Intent(this,  CalibrateActivity::class.java)
+        startActivity(intent)
+
+        return true
+    }
+
+    override fun onRewardsInteraction(uri: Uri) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRadarInteraction(uri: Uri) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onTipsInteraction(item: TipsContent.Tip) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onCoupunInteraction(item: CouponsContent.Coupon) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
@@ -116,47 +219,18 @@ class MainActivity : AppCompatActivity() {
 
         override fun getItem(position: Int): Fragment {
             return when (position) {
-                0 -> DashboardFragment()
-                else -> PlaceholderFragment.newInstance(position)
+                0 -> dash//DashboardFragment()
+                1 -> radar
+                2 -> tips
+                3 -> offers
+                4 -> rewards
+                else -> dash
             }
         }
 
         override fun getCount(): Int {
             // Show 3 total pages.
-            return 3
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    class PlaceholderFragment : Fragment() {
-
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
-            val rootView = inflater.inflate(R.layout.fragment_main, container, false)
-            rootView.section_label.text = getString(R.string.section_format, arguments!!.getInt(ARG_SECTION_NUMBER))
-            return rootView
-        }
-
-        companion object {
-            /**
-             * The fragment argument representing the section number for this
-             * fragment.
-             */
-            private val ARG_SECTION_NUMBER = "section_number"
-
-            /**
-             * Returns a new instance of this fragment for the given section
-             * number.
-             */
-            fun newInstance(sectionNumber: Int): PlaceholderFragment {
-                val fragment = PlaceholderFragment()
-                val args = Bundle()
-                args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-                fragment.arguments = args
-                return fragment
-            }
+            return 5
         }
     }
 }

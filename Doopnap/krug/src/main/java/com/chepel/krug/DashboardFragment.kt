@@ -14,6 +14,9 @@ import android.os.Build
 import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.support.v7.widget.CardView
 import android.util.Log
+import com.google.android.gms.location.places.GeoDataClient
+import com.google.android.gms.location.places.PlaceDetectionClient
+import com.google.android.gms.location.places.Places
 import kotlinx.android.synthetic.main.sickness_prediction.*
 import kotlinx.android.synthetic.main.sleep_bank.*
 import kotlinx.android.synthetic.main.health_zone.*
@@ -25,11 +28,19 @@ import kotlinx.android.synthetic.main.rewards_tracker.*
  */
 class DashboardFragment : Fragment() {
 
+    //private var mGeoDataClient: GeoDataClient? = null
+    //private var mPlaceDetectionClient: PlaceDetectionClient? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
-        return inflater.inflate(R.layout.fragment_dash, container, false)
+        val ret = inflater.inflate(R.layout.fragment_dash, container, false)
+        // Construct a GeoDataClient.
+      //  mGeoDataClient = Places.getGeoDataClient(activity, null)
+
+        // Construct a PlaceDetectionClient.
+        //mPlaceDetectionClient = Places.getPlaceDetectionClient(activity, null)
+        return ret
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,22 +50,10 @@ class DashboardFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        /*
-        sleepBankList.setHasFixedSize(true)
-        // use a linear layout manager
-        val mLayoutManager = LinearLayoutManager(activity)
-        sleepBankList.layoutManager = mLayoutManager
-
-        // specify an adapter (see also next example)
-        val mAdapter = new MyAdapter(myDataset);
-        mRecyclerView.setAdapter(mAdapter);
-        */
-
-
-        card_tl!!.setOnClickListener { onOpenDetails(card_tl, cardTL, progress_tl, progressTL, false) }
-        card_tr!!.setOnClickListener { onOpenDetails(card_tr, cardTR, progress_tr, progressTR, false) }
-        card_bl!!.setOnClickListener { onOpenDetails(card_bl, cardBL, progress_bl, progressBL, true) }
-        card_br!!.setOnClickListener { onOpenDetails(card_br, cardBR, progress_br, progressBR, true) }
+        card_tl.setOnClickListener { onOpenDetails(card_tl, cardTL, progress_tl, progressTL, false) }
+        card_tr.setOnClickListener { onOpenDetails(card_tr, cardTR, progress_tr, progressTR, false) }
+        card_bl.setOnClickListener { onOpenDetails(card_bl, cardBL, progress_bl, progressBL, true) }
+        card_br.setOnClickListener { onOpenDetails(card_br, cardBR, progress_br, progressBR, true) }
 
         progress_tl.value = 51f
         progress_tr.value = 0f

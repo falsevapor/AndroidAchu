@@ -4,8 +4,14 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_dash"
         android:title="@string/title_dashboard"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_radar"
+        android:icon="@drawable/ic_radar"
+        android:title="@string/title_radar"
         app:showAsAction="always|withText" />
 
     <item
@@ -21,9 +27,8 @@
         app:showAsAction="always|withText" />
 
     <item
-        android:id="@+id/navigation_radar"
-        android:icon="@drawable/ic_radar"
-        android:title="@string/title_Radar"
+        android:id="@+id/navigation_rewards"
+        android:icon="@drawable/ic_accept"
+        android:title="rewards"
         app:showAsAction="always|withText" />
-
 </menu>

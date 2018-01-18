@@ -6,10 +6,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
+    android:background="@drawable/main_background"
     tools:context="com.chepel.krug.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/botnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:paddingTop="1dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        android:background="@drawable/ic_border">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/white"
+            >
+
+            <Button
+                android:id="@+id/btn_dash"
+                style="@style/BottomToolBarButton"
+                android:layout_weight=".2"
+                android:drawableTop="@drawable/is_dash_selector"
+                android:text="@string/title_dashboard"
+                />
+
+            <Button
+                android:id="@+id/btn_radar"
+                style="@style/BottomToolBarButton"
+                android:layout_weight=".2"
+                android:drawableTop="@drawable/is_radar_selector"
+                android:text="@string/title_radar"
+                />
+
+            <Button
+                android:id="@+id/btn_tips"
+                style="@style/BottomToolBarButton"
+                android:layout_weight=".2"
+                android:drawableTop="@drawable/is_tips_selector"
+                android:text="@string/title_tips"
+                />
+
+            <Button
+                android:id="@+id/btn_offers"
+                style="@style/BottomToolBarButton"
+                android:layout_weight=".2"
+                android:drawableTop="@drawable/is_offers_selector"
+                android:text="@string/title_offers"
+                />
+
+            <Button
+                android:id="@+id/btn_rewards"
+                style="@style/BottomToolBarButton"
+                android:layout_weight=".2"
+                android:drawableTop="@drawable/is_rewards_selector"
+                android:text="@string/title_rewards"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <!--
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/navigation1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -19,14 +91,15 @@
         app:itemIconTint="@color/clr_bottom_nav"
         app:itemTextColor="@color/clr_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation" />
-
+        app:menu="@menu/navigation"
+        android:visibility="gone"/>
+-->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintBottom_toTopOf="@+id/botnav"
         app:layout_constraintTop_toBottomOf="@+id/theappbar" />
 
     <android.support.design.widget.AppBarLayout
@@ -36,7 +109,15 @@
         android:background="?attr/colorPrimary"
         android:layout_margin="0dp"
         android:padding="0dp"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -47,38 +128,27 @@
             android:padding="0dp"
             app:navigationIcon="@drawable/ic_settings_options"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:contentInsetStart="3dp"
-            >
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"            >
 
             <TextView
+                android:id="@+id/the_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Dashboard"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="12/29/2017"
+                android:text="@string/title_dashboard"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:layout_marginRight="20dp"
                 android:layout_marginEnd="20dp"/>
 
-            <!--
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_achu_toolbar"
-                />-->
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
