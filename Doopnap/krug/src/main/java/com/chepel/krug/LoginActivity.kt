@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private var mAuthTask: UserLoginTask? = null
-    private val credentials:Credentials = Credentials(this)
+    private val credentials:My = My(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +58,9 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             false
         })
 
-        credentials.readPreferences()
+        credentials.load()
 
-        if (credentials.a == EAuthenticator.Achu)
+        if (credentials.a == My.EAuthenticator.Achu)
         {
             email.setText(credentials.uid)
             password.setText(credentials.Key)
