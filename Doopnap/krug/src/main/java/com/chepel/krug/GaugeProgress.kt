@@ -760,6 +760,7 @@ class GaugeProgress : View {
     private var intro:introsteps = introsteps.tointro
 
     private var wakeF:Float = 0f
+    private val rectWakeOut = RectF()
     private val rectWakeIn = RectF()
     private val paintWake = Paint()
     var wake:Float
@@ -767,13 +768,21 @@ class GaugeProgress : View {
         set(v)
         {
             wakeF = v
-            val xy = (rectTrack.width()/2f) * v
+            val haf = rectTrack.width()/2f
+            val xy = haf * v
+            val xyo = haf - xy
+
+            rectWakeOut.set(rectTrack)
+            rectWakeOut.top += xy
+            rectWakeOut.left += xy
+            rectWakeOut.right -= xy
+            rectWakeOut.bottom -= xy
 
             rectWakeIn.set(rectTrack)
-            rectWakeIn.top += xy
-            rectWakeIn.left += xy
-            rectWakeIn.right -= xy
-            rectWakeIn.bottom -= xy
+            rectWakeIn.top -= xyo
+            rectWakeIn.left -= xyo
+            rectWakeIn.right += xyo
+            rectWakeIn.bottom -= xyo
 
             invalidate()
         }
@@ -864,6 +873,7 @@ class GaugeProgress : View {
         }
         else if (introsteps.wake == intro)
         {
+            canvas.drawArc(rectWakeOut, 0f, 360f, false, paintWake)
             canvas.drawArc(rectWakeIn, 0f, 360f, false, paintWake)
             return
         }
