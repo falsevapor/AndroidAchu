@@ -1,9 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="36"
+    android:viewportHeight="36"
     android:width="24dp"
-    android:height="24dp"
-    android:viewportHeight="24.0"
-    android:viewportWidth="24.0">
-    <path
-        android:fillColor="@color/achuGreen"
-        android:pathData="M3,13h8L11,3L3,3v10zM3,21h8v-6L3,15v6zM13,21h8L21,11h-8v10zM13,3v6h8L21,3h-8z" />
+    android:height="24dp">
+    <group
+        android:translateX="-66"
+        android:translateY="-1186">
+        <group
+            android:translateY="1156">
+            <group
+                android:translateX="60"
+                android:translateY="23">
+                <group
+                    android:translateX="6.96"
+                    android:translateY="7.72">
+                    <path
+                        android:pathData="M2.8800001 0L12.48 0c1.59552 0 2.88 1.2844801 2.88 2.8800001l0 9.5999999c0 1.59552 -1.28448 2.88 -2.88 2.88l-9.5999999 0C1.2844801 15.36 0 14.07552 0 12.48L0 2.8800001C0 1.2844801 1.2844801 0 2.8800001 0Z"
+                        android:fillColor="@color/achuGreen" />
+                    <path
+                        android:pathData="M2.8800001 19.200001l9.5999999 0c1.59552 0 2.88 1.28448 2.88 2.88l0 9.599999c0 1.59552 -1.28448 2.88 -2.88 2.88l-9.5999999 0C1.2844801 34.56 0 33.27552 0 31.68l0 -9.599999c0 -1.59552 1.2844801 -2.88 2.8800001 -2.88z"
+                        android:fillColor="@color/achuGreen" />
+                    <path
+                        android:pathData="M22.080001 0L31.68 0c1.59552 0 2.88 1.2844801 2.88 2.8800001l0 9.5999999c0 1.59552 -1.28448 2.88 -2.88 2.88l-9.599999 0c-1.59552 0 -2.88 -1.28448 -2.88 -2.88l0 -9.5999999C19.200001 1.2844801 20.484481 0 22.080001 0Z"
+                        android:fillColor="@color/achuGreen" />
+                    <path
+                        android:pathData="M22.080001 19.200001l9.599999 0c1.59552 0 2.88 1.28448 2.88 2.88l0 9.599999c0 1.59552 -1.28448 2.88 -2.88 2.88l-9.599999 0c-1.59552 0 -2.88 -1.28448 -2.88 -2.88l0 -9.599999c0 -1.59552 1.28448 -2.88 2.88 -2.88z"
+                        android:fillColor="@color/achuGreen" />
+                </group>
+            </group>
+        </group>
+    </group>
 </vector>

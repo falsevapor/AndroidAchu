@@ -14,6 +14,7 @@ import android.os.Build
 import android.support.v4.view.animation.FastOutSlowInInterpolator
 import android.support.v7.widget.CardView
 import android.util.Log
+import android.view.animation.AnimationUtils
 import com.google.android.gms.location.places.GeoDataClient
 import com.google.android.gms.location.places.PlaceDetectionClient
 import com.google.android.gms.location.places.Places
@@ -21,6 +22,9 @@ import kotlinx.android.synthetic.main.sickness_prediction.*
 import kotlinx.android.synthetic.main.sleep_bank.*
 import kotlinx.android.synthetic.main.health_zone.*
 import kotlinx.android.synthetic.main.rewards_tracker.*
+import android.support.design.widget.TabLayout
+
+
 
 
 /**
@@ -50,6 +54,19 @@ class DashboardFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        var runtime = false
+        if (null != activity)
+            runtime = activity!!.intent.getBooleanExtra("runtime", false)
+
+        progress_tl.animateValue = runtime
+        progress_tr.animateValue = runtime
+        progress_bl.animateValue = runtime
+        progress_br.animateValue = runtime
+        progress_tl.showIntro = runtime
+        progress_tr.showIntro = runtime
+        progress_bl.showIntro = runtime
+        progress_br.showIntro = runtime
+
         card_tl.setOnClickListener { onOpenDetails(card_tl, cardTL, progress_tl, progressTL, false) }
         card_tr.setOnClickListener { onOpenDetails(card_tr, cardTR, progress_tr, progressTR, false) }
         card_bl.setOnClickListener { onOpenDetails(card_bl, cardBL, progress_bl, progressBL, true) }
@@ -60,36 +77,53 @@ class DashboardFragment : Fragment() {
         progress_bl.value = 77f
         progress_br.value = 14f
 
-        btnAni0.setOnClickListener {
-            progress_tl.value = 0f
-            progress_tr.value = -12f
-            progress_bl.value = 0f
-            progress_br.value = 0f
-        }
-        btnAni38.setOnClickListener {
-            progress_tl.value = 21f
-            progress_tr.value = -3f
-            progress_bl.value = 34f
-            progress_br.value = 30f
-        }
-        btnAni62.setOnClickListener {
-            progress_tl.value = 48f
-            progress_tr.value = 0f
-            progress_bl.value = 53f
-            progress_br.value = 50f
-        }
-        btnAni89.setOnClickListener {
-            progress_tl.value = 75f
-            progress_tr.value = 4f
-            progress_bl.value = 95f
-            progress_br.value = 81f
-        }
-        btnAni100.setOnClickListener {
-            progress_tl.value = 100f
-            progress_tr.value = 12f
-            progress_bl.value = 100f
-            progress_br.value = 100f
-        }
+        btn_topTip.setOnClickListener {onNextTopCard()}
+        btn_topDeal.setOnClickListener {onNextTopCard()}
+
+        btn_topHome.setOnClickListener {onPrevTopCard()}
+        btn_topTipBack.setOnClickListener {onPrevTopCard()}
+
+        topDots.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                val position = tab.position
+                if (position < viewpagerHot.displayedChild)
+                {
+                    viewpagerHot.setInAnimation(activity, R.anim.left_in)
+                    viewpagerHot.setOutAnimation(activity, R.anim.right_out)
+                    viewpagerHot.displayedChild = position
+                }
+                if (position > viewpagerHot.displayedChild)
+                {
+                    viewpagerHot.setInAnimation(activity, R.anim.right_in)
+                    viewpagerHot.setOutAnimation(activity, R.anim.left_out)
+                    viewpagerHot.displayedChild = position
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+    }
+
+    fun onNextTopCard()
+    {
+        viewpagerHot.setInAnimation(activity, R.anim.right_in)
+        viewpagerHot.setOutAnimation(activity, R.anim.left_out)
+        viewpagerHot.showNext()
+        var dotindex = topDots.selectedTabPosition + 1
+        if (dotindex < topDots.tabCount)
+            topDots.getTabAt(dotindex)!!.select()
+    }
+
+    fun onPrevTopCard()
+    {
+        viewpagerHot.setInAnimation(activity, R.anim.left_in)
+        viewpagerHot.setOutAnimation(activity, R.anim.right_out)
+        viewpagerHot.showPrevious()
+        var dotindex = topDots.selectedTabPosition - 1
+        if (-1 < dotindex)
+            topDots.getTabAt(dotindex)!!.select()
     }
 
     private fun onOpenDetails(card:CardView, CARD:CardView, progress: GaugeProgress?, PROGRESS: GaugeProgress, up:Boolean)
@@ -109,6 +143,8 @@ class DashboardFragment : Fragment() {
 
         //card.getLocalVisibleRect(startBoundsI)
         card.getGlobalVisibleRect(startBoundsI, gc)
+        //val cardcolor = card.cardBackgroundColor
+        CARD.setCardBackgroundColor(card.cardBackgroundColor)
         //CARD.getLocalVisibleRect(finalBoundsI)
         CARD.getGlobalVisibleRect(SBI, GC)
         topContainer.getGlobalVisibleRect(finalBoundsI, globalOffset)

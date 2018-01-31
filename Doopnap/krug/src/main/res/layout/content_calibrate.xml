@@ -1,57 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chepel.krug.CalibrateActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:fitsSystemWindows="true"
+    android:padding="16dp"
+    android:weightSum="3"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Please select symptoms"
-        android:gravity="center_horizontal"/>
-
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.chepel.krug.CalibrateActivity"
-        tools:showIn="@layout/activity_calibrate">
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline33V"
-            android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.33" />
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp1"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_symptom_01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.v7.widget.CardView>
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline66V"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txt_symp1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Runny Nose &amp; sneezing"
+                app:layout_constraintEnd_toEndOf="@+id/symp1"
+                app:layout_constraintStart_toStartOf="@+id/symp1"
+                app:layout_constraintTop_toBottomOf="@+id/symp1" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.67" />
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+                <android.support.v7.widget.CardView
+                    android:id="@+id/symp2"
+                    style="@style/CalibrateCard"
+                    android:layout_width="0dp"
+                    app:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#f1f5f4">
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline33H"
-            android:layout_width="wrap_content"
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/ic_symptom_02" />
+                </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Nasal Congestion"
+                app:layout_constraintEnd_toEndOf="@+id/symp2"
+                app:layout_constraintStart_toStartOf="@+id/symp2"
+                app:layout_constraintTop_toBottomOf="@+id/symp2" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.33" />
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+                <android.support.v7.widget.CardView
+                    android:id="@+id/symp3"
+                    style="@style/CalibrateCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#f1f5f4">
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline66H"
-            android:layout_width="wrap_content"
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/ic_symptom_03" />
+                </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Sinus pressure &amp; Pain"
+                app:layout_constraintEnd_toEndOf="@+id/symp3"
+                app:layout_constraintStart_toStartOf="@+id/symp3"
+                app:layout_constraintTop_toBottomOf="@+id/symp3" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:baselineAligned="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.67" />
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp4"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_symptom_04"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.v7.widget.CardView>
 
+            <TextView
+                android:id="@+id/txt_symp4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Sore Throat Pain"
+                app:layout_constraintEnd_toEndOf="@+id/symp4"
+                app:layout_constraintStart_toStartOf="@+id/symp4"
+                app:layout_constraintTop_toBottomOf="@+id/symp4" />
+        </android.support.constraint.ConstraintLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp5"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                app:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
 
-    </android.support.constraint.ConstraintLayout>
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_symptom_05" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Fever, Aches &amp; Chills"
+                app:layout_constraintEnd_toEndOf="@+id/symp5"
+                app:layout_constraintStart_toStartOf="@+id/symp5"
+                app:layout_constraintTop_toBottomOf="@+id/symp5" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp6"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_symptom_06" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Cough with Mucus &amp; Phlegm"
+                app:layout_constraintEnd_toEndOf="@+id/symp6"
+                app:layout_constraintStart_toStartOf="@+id/symp6"
+                app:layout_constraintTop_toBottomOf="@+id/symp6" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:baselineAligned="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp7"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_symptom_07"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/txt_symp7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Cough"
+                app:layout_constraintEnd_toEndOf="@+id/symp7"
+                app:layout_constraintStart_toStartOf="@+id/symp7"
+                app:layout_constraintTop_toBottomOf="@+id/symp7" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp8"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                app:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_symptom_08" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Headache"
+                app:layout_constraintEnd_toEndOf="@+id/symp8"
+                app:layout_constraintStart_toStartOf="@+id/symp8"
+                app:layout_constraintTop_toBottomOf="@+id/symp8" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/symp9"
+                style="@style/CalibrateCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#f1f5f4">
+
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_symptom_09" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_symp9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Nighttime, Insomnia"
+                app:layout_constraintEnd_toEndOf="@+id/symp9"
+                app:layout_constraintStart_toStartOf="@+id/symp9"
+                app:layout_constraintTop_toBottomOf="@+id/symp9" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Symptoms"
+        android:textColor="#ffffffff"
+        android:background="#44c4a1"
+        android:shadowColor="#ffffffff"
+        android:elevation="0dp"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="0"
+        android:layout_margin="8dp"
+        />
 </LinearLayout>

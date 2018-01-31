@@ -71,7 +71,7 @@ class My(_context: Context)
 
         if (0 < (section and EPrefSection.Credentials.bit))
         {
-            uid = if (userID.isEmpty()) p.getString(mykey(context.getString(R.string.opts_uid)), uid) else userID
+            uid = if (userID.isEmpty()) p.getString(context.getString(R.string.opts_uid), uid) else userID
             xtra = p.getString(mykey(context.getString(R.string.opts_xtra)), xtra)
             email = p.getString(mykey(context.getString(R.string.opts_email)), email)
             key = p.getString(mykey(context.getString(R.string.opts_key)), key)

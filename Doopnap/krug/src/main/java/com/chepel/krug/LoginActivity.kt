@@ -130,7 +130,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         password.error = null
 
         credentials.uid = email.text.toString()
-        credentials.a = EAuthenticator.Achu
+        credentials.a = My.EAuthenticator.Achu
         credentials.Key = password.text.toString()
 
         // Store values at the time of the login attempt.
@@ -311,6 +311,9 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     {
 //        showProgress(false)
   //      Snackbar.make(sign_in_button, "New uzver?!", Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE)/*.setAction("Action", null).*/.show()
+        credentials.email = credentials.uid
+        credentials.xtra = ""
+        credentials.save(My.EPrefSection.Credentials.bit)
 
         val intent = Intent(this,  MyInfoActivity::class.java)
         intent.putExtra("register", true)
@@ -322,10 +325,10 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         credentials.email = credentials.uid
         credentials.xtra = ""
 
-        credentials.writePreferences()
+        credentials.save(My.EPrefSection.Credentials.bit)
 
         val intent = Intent(this,  MainActivity::class.java)
-        intent.putExtra("Login extra", "Logeen sukses")
+        intent.putExtra("runtime", true)
         startActivity(intent)
         finish()
     }

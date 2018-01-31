@@ -42,8 +42,7 @@
                 style="@style/BottomToolBarButton"
                 android:layout_weight=".2"
                 android:drawableTop="@drawable/is_dash_selector"
-                android:text="@string/title_dashboard"
-                />
+                android:text="@string/title_dashboard" />
 
             <Button
                 android:id="@+id/btn_radar"

@@ -770,7 +770,6 @@ class GaugeProgress : View {
             wakeF = v
             val haf = rectTrack.width()/2f
             val xy = haf * v
-            val xyo = haf - xy
 
             rectWakeOut.set(rectTrack)
             rectWakeOut.top += xy
@@ -779,10 +778,10 @@ class GaugeProgress : View {
             rectWakeOut.bottom -= xy
 
             rectWakeIn.set(rectTrack)
-            rectWakeIn.top -= xyo
-            rectWakeIn.left -= xyo
-            rectWakeIn.right += xyo
-            rectWakeIn.bottom -= xyo
+            rectWakeIn.top -= xy
+            rectWakeIn.left -= xy
+            rectWakeIn.right += xy
+            rectWakeIn.bottom += xy
 
             invalidate()
         }

@@ -138,7 +138,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
 
         fun onSignOut()
         {
-            Credentials(activity).readPreferences().signOut()
+            My(activity).load().signOut()
 
             val intent = Intent(activity, MainActivity::class.java)
             intent.putExtra("sign_out", true)
@@ -149,7 +149,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
 
         fun onForgetMe()
         {
-            Credentials(activity).readPreferences().forget()
+            My(activity).load().forget()
 
             val intent = Intent(activity, MainActivity::class.java)
             intent.putExtra("sign_out", true)
