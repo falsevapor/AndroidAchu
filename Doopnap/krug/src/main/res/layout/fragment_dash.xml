@@ -193,21 +193,40 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/titleTL"
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Heart" />
+                <TextView
+                    android:id="@+id/valueTL"
+                    style="@style/DashBoardCardValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="77%"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTL"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
                 <TextView
                     style="@style/DashBoardCardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Heart" />
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/valueTL"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="12sp"
+                    android:text="Match" />
 
                 <ImageView
                     app:srcCompat="@drawable/ic_heart"
+                    style="@style/dashIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_margin="14dp"
-                    android:scaleType="fitCenter"
                     app:layout_constraintTop_toTopOf="@+id/progress_tl"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_tl"
                     app:layout_constraintEnd_toEndOf="@+id/progress_tl"
@@ -215,35 +234,9 @@
 
                 <com.chepel.krug.GaugeProgress
                     android:id="@+id/progress_tl"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#0fff"
-                    android:padding="4dp"
-                    app:animateValue="false"
-                    app:heightSameAsWidth="false"
-                    app:intro="false"
-                    app:labelAlignment="center|bottom"
-                    app:labelSize="0sp"
+                    style="@style/dashGaugeRainbow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:maxV="100"
-                    app:mercuryWidth="5dp"
-                    app:minV="0"
-                    app:startFrom="-90.0"
-                    app:subLabel=""
-                    app:subLabelAlignment="center|bottom"
-                    app:subLabelColor="@color/textColorSecondary"
-                    app:subLabelSize="14sp"
-                    app:sweep="360.0"
-                    app:trackWidth="5dp"
-                    app:value="0"
-                    app:valueColor="@android:color/holo_red_dark"
-                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
-                    app:valueSuffix=""
-                    app:valueSuffixColor="@color/textColorSecondary"
-                    app:valueSuffixSize="14sp"
                     tools:animateValue="false"
                     tools:intro="false" />
             </android.support.constraint.ConstraintLayout>
@@ -268,21 +261,40 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/titleTR"
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Activity" />
+                <TextView
+                    android:id="@+id/valueTR"
+                    style="@style/DashBoardCardValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="77%"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTR"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
                 <TextView
                     style="@style/DashBoardCardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Activity" />
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/valueTR"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="12sp"
+                    android:text="Match" />
 
                 <ImageView
                     app:srcCompat="@drawable/ic_activities_large"
+                    style="@style/dashIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_margin="14dp"
-                    android:scaleType="fitCenter"
                     app:layout_constraintTop_toTopOf="@+id/progress_tr"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_tr"
                     app:layout_constraintEnd_toEndOf="@+id/progress_tr"
@@ -290,35 +302,9 @@
 
                 <com.chepel.krug.GaugeProgress
                     android:id="@+id/progress_tr"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#0fff"
-                    android:padding="4dp"
-                    app:animateValue="false"
-                    app:heightSameAsWidth="false"
-                    app:intro="false"
-                    app:labelAlignment="center|bottom"
-                    app:labelSize="0sp"
+                    style="@style/dashGaugeRainbow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:maxV="100"
-                    app:mercuryWidth="5dp"
-                    app:minV="0"
-                    app:startFrom="-90.0"
-                    app:subLabel=""
-                    app:subLabelAlignment="center|bottom"
-                    app:subLabelColor="@color/textColorSecondary"
-                    app:subLabelSize="14sp"
-                    app:sweep="360.0"
-                    app:trackWidth="5dp"
-                    app:value="0"
-                    app:valueColor="@android:color/holo_red_dark"
-                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
-                    app:valueSuffix=""
-                    app:valueSuffixColor="@color/textColorSecondary"
-                    app:valueSuffixSize="14sp"
                     tools:animateValue="false"
                     tools:intro="false" />
             </android.support.constraint.ConstraintLayout>
@@ -343,21 +329,40 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/titleBL"
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Sleep bank" />
+                <TextView
+                    android:id="@+id/valueBL"
+                    style="@style/DashBoardCardValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+3"
+                    app:layout_constraintTop_toBottomOf="@+id/titleBL"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
                 <TextView
                     style="@style/DashBoardCardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sleep" />
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/valueBL"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="12sp"
+                    android:text="Hours" />
 
                 <ImageView
                     app:srcCompat="@drawable/ic_sleep_large"
+                    style="@style/dashIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_margin="14dp"
-                    android:scaleType="fitCenter"
                     app:layout_constraintTop_toTopOf="@+id/progress_bl"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_bl"
                     app:layout_constraintEnd_toEndOf="@+id/progress_bl"
@@ -365,36 +370,20 @@
 
                 <com.chepel.krug.GaugeProgress
                     android:id="@+id/progress_bl"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#0fff"
-                    android:padding="4dp"
-                    app:animateValue="false"
-                    app:heightSameAsWidth="false"
-                    app:intro="false"
-                    app:labelAlignment="center|bottom"
-                    app:labelSize="0sp"
+                    style="@style/dashGauge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:maxV="12"
-                    app:mercuryWidth="5dp"
                     app:minV="-12"
                     app:negativeTrackColor="#20F44336"
                     app:negativeValueColor="#F44336"
                     app:showPlus="true"
                     app:startFrom="135.0"
-                    app:subLabel=""
-                    app:subLabelAlignment="center|bottom"
-                    app:subLabelColor="@color/textColorSecondary"
-                    app:subLabelSize="14sp"
                     app:sweep="270.0"
                     app:trackAlpha="32"
                     app:trackColor="#204CAF50"
-                    app:trackWidth="5dp"
-                    app:value="0"
                     app:valueColor="#4CAF50"
+                    app:valueSuffix=""
                     tools:animateValue="false"
                     tools:intro="false"
                     />
@@ -420,21 +409,41 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/titleBR"
+                    style="@style/DashBoardCardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Weather" />
+                <TextView
+                    android:id="@+id/valueBR"
+                    style="@style/DashBoardCardValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="77%"
+                    app:layout_constraintTop_toBottomOf="@+id/titleBR"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
                 <TextView
                     style="@style/DashBoardCardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Weather" />
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/valueBR"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="12sp"
+                    android:text="Match" />
+
 
                 <ImageView
                     app:srcCompat="@drawable/ic_weather_large"
+                    style="@style/dashIcon"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_margin="14dp"
-                    android:scaleType="fitCenter"
                     app:layout_constraintTop_toTopOf="@+id/progress_br"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_br"
                     app:layout_constraintEnd_toEndOf="@+id/progress_br"
@@ -442,35 +451,9 @@
 
                 <com.chepel.krug.GaugeProgress
                     android:id="@+id/progress_br"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#0fff"
-                    android:padding="4dp"
-                    app:animateValue="false"
-                    app:heightSameAsWidth="false"
-                    app:intro="false"
-                    app:labelAlignment="center|bottom"
-                    app:labelSize="0sp"
+                    style="@style/dashGaugeRainbow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:maxV="100"
-                    app:mercuryWidth="5dp"
-                    app:minV="0"
-                    app:startFrom="-90.0"
-                    app:subLabel=""
-                    app:subLabelAlignment="center|bottom"
-                    app:subLabelColor="@color/textColorSecondary"
-                    app:subLabelSize="14sp"
-                    app:sweep="360.0"
-                    app:trackWidth="5dp"
-                    app:value="0"
-                    app:valueColor="@android:color/holo_red_dark"
-                    app:valueColors="#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000"
-                    app:valueSuffix=""
-                    app:valueSuffixColor="@color/textColorSecondary"
-                    app:valueSuffixSize="14sp"
                     tools:animateValue="false"
                     tools:intro="false"
                     />
@@ -492,7 +475,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitEnd"/>
-            <include layout="@layout/sickness_prediction"/>
+            <include layout="@layout/card_heart"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -509,7 +492,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitEnd"/>
 
-            <include layout="@layout/sleep_bank"/>
+            <include layout="@layout/card_activity"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -525,7 +508,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitEnd"/>
-            <include layout="@layout/health_zone"/>
+            <include layout="@layout/card_sleep"/>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -541,7 +524,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitEnd"/>
-            <include layout="@layout/rewards_tracker"/>
+            <include layout="@layout/card_weather"/>
         </android.support.v7.widget.CardView>
 
 </FrameLayout>

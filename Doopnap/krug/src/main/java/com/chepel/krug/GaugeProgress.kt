@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import kotlin.math.max
 import kotlin.math.min
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
+import android.widget.TextView
 
 
 /**
@@ -476,6 +477,24 @@ class GaugeProgress : View {
         return res
     }
 
+    private var externalValuePresenter: TextView? = null
+    var valuePresenter: TextView
+        get() = externalValuePresenter!!
+        set(v)
+        {
+            externalValuePresenter = v
+
+            updateExtrenalValuePresenter()
+        }
+
+    fun updateExtrenalValuePresenter()
+    {
+        if (null != externalValuePresenter)
+        {
+            externalValuePresenter!!.text = prefix.value + mainLabel.value + suffix.value
+        }
+    }
+
     private var valueF: Float = 0f
     private val animParams: AnimationRange = AnimationRange()
     private var introVal : Float = 0f
@@ -522,6 +541,7 @@ class GaugeProgress : View {
             val n:Int = v.toInt()
             //mLabelString = "$valueprefix$n$valuesuffix"
             mainLabel.value = if (showplus && 0 < n) "+$n" else "$n"
+            updateExtrenalValuePresenter()
 
             valueSweepF = sweepF * ((v - minF)/(maxF - minF)) - zeroSweep
             if (showminimum && 0f == valueSweepF)
@@ -770,6 +790,7 @@ class GaugeProgress : View {
             wakeF = v
             val haf = rectTrack.width()/2f
             val xy = haf * v
+            val xyo = rectTrack.width() * v
 
             rectWakeOut.set(rectTrack)
             rectWakeOut.top += xy
@@ -778,10 +799,10 @@ class GaugeProgress : View {
             rectWakeOut.bottom -= xy
 
             rectWakeIn.set(rectTrack)
-            rectWakeIn.top -= xy
-            rectWakeIn.left -= xy
-            rectWakeIn.right += xy
-            rectWakeIn.bottom += xy
+            rectWakeIn.top -= xyo
+            rectWakeIn.left -= xyo
+            rectWakeIn.right += xyo
+            rectWakeIn.bottom += xyo
 
             invalidate()
         }
@@ -791,7 +812,7 @@ class GaugeProgress : View {
         val anims = AnimatorSet()
         val a = ObjectAnimator.ofFloat(this, "wake", 1f, 0f)
         a.startDelay = 250
-        a.duration = 250
+        a.duration = 400
         //a.interpolator = LinearOutSlowInInterpolator()
         a.interpolator = FastOutSlowInInterpolator()
         //a.interpolator = FastOutLinearInInterpolator()
@@ -809,9 +830,9 @@ class GaugeProgress : View {
         })
         val c = ValueAnimator.ofInt(0,255)
         c.startDelay = 250
-        c.duration = 250
-        c.interpolator = LinearOutSlowInInterpolator()
-        //c.interpolator = FastOutLinearInInterpolator()
+        c.duration = 400
+        //c.interpolator = LinearOutSlowInInterpolator()
+        c.interpolator = FastOutSlowInInterpolator()
         c.addUpdateListener {
             val i = paintWake.color and 0x00ffffff
             paintWake.color = i or ((it.animatedValue as Int) shl 24)

@@ -51,6 +51,7 @@
         <item name="cardUseCompatPadding">false</item>
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">8dp</item>
+        <item name="cardBackgroundColor">#f1f5f4</item>
     </style>
 
     <style name="DashBoardTopCard">
@@ -71,18 +72,33 @@
     </style>
 
     <style name="DashBoardCardTitle">
-        <item name="android:layout_marginTop">0dp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:padding">0dp</item>
         <item name="android:shadowColor">#00000000</item>
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">2</item>
         <item name="android:shadowRadius">10</item>
-        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">16sp</item>
+    </style>
+    <style name="DashBoardCardValue">
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 
     <style name="BottomToolBarButton" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:layout_width">0dp</item>
@@ -108,5 +124,75 @@
 
     <style name="avalue" parent="akey">
         <item name="android:textColor">@color/achuGreen</item>
+    </style>
+
+    <style name="fabselection">
+        <item name="android:layout_margin">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="fabSize">mini</item>
+        <item name="srcCompat">@drawable/ic_accept</item>
+    </style>
+
+    <style name="calibrateText">
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="elevation">0dp</item>
+        <item name="fabSize">mini</item>
+        <item name="srcCompat">@drawable/ic_accept</item>
+    </style>
+
+    <style name="achuGreenButton">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:background">#44c4a1</item>
+    </style>
+
+    <style name="dashGauge">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingBottom">30dp</item>
+        <item name="android:background">#0fff</item>
+        <item name="animateValue">false</item>
+        <item name="intro">false</item>
+        <item name="heightSameAsWidth">false</item>
+        <item name="labelAlignment">center</item>
+        <item name="subLabelAlignment">center</item>
+        <item name="labelSize">0sp</item>
+        <item name="subLabelSize">14sp</item>
+        <item name="mercuryWidth">5dp</item>
+        <item name="trackWidth">5dp</item>
+        <item name="value">0</item>
+        <item name="minV">0</item>
+        <item name="maxV">100</item>
+        <item name="startFrom">-90.0</item>
+        <item name="sweep">360.0</item>
+        <item name="valueSuffix">%</item>
+        <item name="valueSuffixSize">0sp</item>
+        <item name="valueColor">@android:color/holo_red_dark</item>
+        <item name="subLabelColor">@color/textColorSecondary</item>
+        <item name="valueSuffixColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="dashGaugeRainbow" parent="dashGauge">
+        <item name="valueColors">#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000</item>
+    </style>
+
+    <style name="dashIcon">
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginStart">44dp</item>
+        <item name="android:layout_marginLeft">44dp</item>
+        <item name="android:layout_marginBottom">44dp</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 </resources>

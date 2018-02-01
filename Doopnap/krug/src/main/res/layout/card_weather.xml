@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        style="@style/DashBoardCardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather" />
+
+    <ImageView
+        app:srcCompat="@drawable/ic_weather_large"
+        style="@style/dashIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@+id/progressBR"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBR"
+        app:layout_constraintEnd_toEndOf="@+id/progressBR"
+        app:layout_constraintStart_toStartOf="@+id/progressBR"/>
+
+    <com.chepel.krug.GaugeProgress
+        android:id="@+id/progressBR"
+        style="@style/dashGaugeRainbow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:animateValue="false"
+        tools:intro="false"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        />
+</android.support.constraint.ConstraintLayout>
