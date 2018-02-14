@@ -3,6 +3,10 @@
 
     <color name="achuGreen">#25b559</color>
     <color name="achuLightGreen">#70D79B</color>
+    <color name="achuAltGreen">#44c4a1</color>
+    <color name="achuInactiveGrey">#b6c0c8</color>
+    <color name="achuLightGrey">#f4f5f7</color>
+
 
     <color name="colorPrimary">#00ffffff</color>
     <color name="colorPrimaryDark">#00ffffff</color>
@@ -26,5 +30,7 @@
     <color name="colorAdvertisement">#FF70C696</color>
 
     <color name="colorDatePickerControlActivated">#EC407A</color>
+
+    <color name="achuOrange">#ff972f</color>
 
 </resources>

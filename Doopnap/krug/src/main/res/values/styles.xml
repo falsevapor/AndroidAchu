@@ -20,6 +20,10 @@
         <item name="colorControlNormal">@color/toolbarTextColorPrimary</item>
     </style>
 
+    <style name="TodayTheme" parent="AppTheme">
+        <item name="colorControlNormal">@color/toolbarTextColorPrimary</item>
+    </style>
+
     <style name="MyInfoTheme" parent="AppTheme">
         <item name="android:textColorPrimary">@color/achuGreen</item>
         <item name="android:textColorSecondary">@color/achuGreen</item>
@@ -32,10 +36,22 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="DashBoardCard">
         <item name="android:layout_margin">8dp</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+
+    <style name="DashBoardCARD">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
         <item name="cardUseCompatPadding">false</item>
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">8dp</item>
@@ -72,33 +88,48 @@
     </style>
 
     <style name="DashBoardCardTitle">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_margin">0dp</item>
         <item name="android:padding">0dp</item>
-        <item name="android:shadowColor">#00000000</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">2</item>
-        <item name="android:shadowRadius">10</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">16sp</item>
     </style>
+
     <style name="DashBoardCardValue">
-        <item name="android:layout_marginTop">0dp</item>
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_margin">0dp</item>
         <item name="android:padding">0dp</item>
-        <item name="android:shadowColor">#00000000</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">2</item>
-        <item name="android:shadowRadius">10</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="DashBoardCardValueSuffix">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DashBoardCARDTitle">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="DashBoardCARDValue">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DashBoardCARDValueSuffix">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
     <style name="BottomToolBarButton" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:layout_width">0dp</item>
@@ -107,7 +138,9 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/clr_bottom_nav</item>
         <item name="android:layout_margin">0dp</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
@@ -138,14 +171,23 @@
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
-        <item name="elevation">0dp</item>
-        <item name="fabSize">mini</item>
-        <item name="srcCompat">@drawable/ic_accept</item>
     </style>
 
-    <style name="achuGreenButton">
+    <style name="achuGreenButton" parent="@style/Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">#ffffffff</item>
-        <item name="android:background">#44c4a1</item>
+        <item name="android:background">@drawable/achu_green_button</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="achuWhiteButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/achu_white_button</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="achuCancelButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="dashGauge">
@@ -186,6 +228,31 @@
         <item name="valueColors">#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000</item>
     </style>
 
+    <style name="hotGauge">
+        <item name="android:background">#0fff</item>
+        <item name="animateValue">false</item>
+        <item name="intro">false</item>
+        <item name="heightSameAsWidth">false</item>
+        <item name="labelAlignment">center</item>
+        <item name="subLabelAlignment">center</item>
+        <item name="labelSize">0sp</item>
+        <item name="subLabelSize">14sp</item>
+        <item name="mercuryWidth">5dp</item>
+        <item name="trackWidth">5dp</item>
+        <item name="value">0</item>
+        <item name="minV">0</item>
+        <item name="maxV">100</item>
+        <item name="startFrom">-90.0</item>
+        <item name="sweep">360.0</item>
+        <item name="valueSuffix">%</item>
+        <item name="valueSuffixSize">0sp</item>
+        <item name="valueColor">@android:color/holo_red_dark</item>
+        <item name="subLabelColor">@color/textColorSecondary</item>
+        <item name="valueSuffixColor">@color/textColorSecondary</item>
+        <item name="valueColors">#FF0000FF #FF00AA0F #FFF0C000 #FFFF8C00 #FFDD0000</item>
+    </style>
+
+
     <style name="dashIcon">
         <item name="android:layout_marginEnd">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
@@ -194,5 +261,10 @@
         <item name="android:layout_marginLeft">44dp</item>
         <item name="android:layout_marginBottom">44dp</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="achuRatingBar">
+        <item name="colorControlNormal">@color/achuInactiveGrey</item>
+        <item name="colorControlActivated">@color/achuOrange</item>
     </style>
 </resources>

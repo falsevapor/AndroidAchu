@@ -21,7 +21,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
 import android.app.Activity
 import android.content.Intent
@@ -29,6 +28,8 @@ import android.graphics.Color
 
 import kotlinx.android.synthetic.main.activity_login.*
 import android.view.inputmethod.InputMethodManager
+import java.time.Instant
+import java.util.*
 
 
 /**
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private var mAuthTask: UserLoginTask? = null
-    private val credentials:My = My(this)
+    private val credentials = My(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -325,10 +326,20 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         credentials.email = credentials.uid
         credentials.xtra = ""
 
-        credentials.save(My.EPrefSection.Credentials.bit)
+        credentials.loginCounter++
 
+        var clast = Calendar.getInstance()
+        clast.time = credentials.loginLast
+
+        val cnow = Calendar.getInstance()
+        credentials.loginLast = cnow.time
+
+        credentials.save(My.EPrefSection.Credentials.bit or My.EPrefSection.Stats.bit)
+
+        val samedate = cnow.get(Calendar.DAY_OF_YEAR) == clast.get(Calendar.DAY_OF_YEAR) && cnow.get(Calendar.YEAR) == clast.get(Calendar.YEAR)
         val intent = Intent(this,  MainActivity::class.java)
         intent.putExtra("runtime", true)
+        intent.putExtra("goodMorning", !samedate)
         startActivity(intent)
         finish()
     }

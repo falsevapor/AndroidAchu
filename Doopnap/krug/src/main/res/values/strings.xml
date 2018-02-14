@@ -3,7 +3,9 @@
 
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="skip">Skip</string>
 
+    <!--units and stuff-->
     <string name="kg">kg</string>
     <string-array name="kg">
         <item>kilogram</item>
@@ -38,14 +40,11 @@
         <item>inches</item>
     </string-array>
 
-    <string name="action_settings">Settings</string>
-    <string name="action_calibrate">Symptom selector</string>
-    <string name="title_tips">Tips</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_offers">Offers</string>
-    <string name="title_radar">Radar</string>
-    <string name="title_rewards">Rewards</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="goodMorning">Good Morning</string>
+    <string name="goodAfternoon">Good Afternoon</string>
+    <string name="goodDay">Good Day</string>
+    <string name="goodEvening">Good Evening</string>
+    <string name="hello">Hello</string>
 
     <!-- Strings related to Settings -->
     <string name="PREFERENCE_FILE_ID">com.chepel.achu.PREFERENCE_FILE_ID</string>
@@ -122,8 +121,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_calibrate">Symptom selector</string>
-    <string name="title_activity_today">Hello</string>
+
     <string name="title_activity_my_info">My Information</string>
 
     <!-- Strings related to login -->
@@ -147,6 +145,79 @@
     <string name="numtag">numtag</string>
     <string name="num2tag">num2tag</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--UI strings-->
+    <string name="action_settings">Settings</string>
+    <string name="title_tips">Tips</string>
+    <string name="title_offers">Offers</string>
+    <string name="title_radar">Radar</string>
+    <string name="title_rewards">Rewards</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+
+    <!--dashboard-->
+    <string name="title_dashboard">Dashboard</string>
+    <string name="dashboard_slogan">View the sickness patterns discovered in your health data</string>
+
+    <!--hot cards-->
+
+    <string name="dash_risk">You are at %s %s</string>
+    <string name="dash_risk_slogan">Chance of a recurring illness based on your most recent data.</string>
+    <string name="dash_risk_low">low risk</string>
+    <string name="dash_risk_moderate">moderate risk</string>
+    <string name="dash_risk_high">High Risk</string>
+
+    <!--cards string-->
+    <string name="card_suffix_match">Match</string>
+    <string name="card_slogan_suffix">Match</string>
+    <!--<string name="card_slogan_suffix">Health Data Match</string>-->
+
+    <string name="card_heart">Heart</string>
+    <string name="card_heart_slogan">Heart patterns in your bracelet data correlated to your health.</string>
+    <string name="card_heart_rate">Heart Rate</string>
+    <string name="card_blood_pressure">Blood Pressure</string>
+    <string name="card_blood_oxygen">Blood Oxygen</string>
+
+    <string name="card_weather">Weather</string>
+    <string name="card_weather_slogan">Weather patterns in your area correlated to your health.</string>
+    <string name="card_weather_temperature">Temperature</string>
+    <string name="card_weather_pressure">Pressure</string>
+    <string name="card_weather_humidity">Humidity</string>
+    <string name="card_weather_pollution">Air Pollution</string>
+
+    <string name="card_activity">Activity</string>
+    <string name="card_activity_slogan">Activity patterns in your bracelet data correlated to your health.</string>
+    <string name="card_activity_steps">Steps</string>
+    <string name="card_activity_active">Active</string>
+    <string name="card_activity_inactive">Inactive</string>
+
+    <string name="card_sleep">Sleep</string>
+    <string name="card_sleep_slogan">Sleep patterns in your bracelet data correlated to your health.</string>
+    <string name="card_sleep_bedtime">Bed Time</string>
+    <string name="card_sleep_waketime">Wake Time</string>
+    <string name="card_sleep_total">Total Sleep</string>
+    <string name="card_sleep_quality">Sleep Quality</string>
+
+    <!--calibrate-->
+    <string name="title_activity_calibrate">Symptom selector</string>
+    <string name="action_calibrate">Symptom selector</string>
+    <string name="symp_nose_run">Runny Nose &amp; sneezing</string>
+    <string name="symp_congest">Nasal Congestion</string>
+    <string name="symp_sinus">Sinus pressure &amp; Pain</string>
+    <string name="symp_sore_throat">Sore Throat Pain</string>
+    <string name="symp_fever">Fever, Aches &amp; Chills</string>
+    <string name="symp_wet_cough">Cough with Mucus &amp; Phlegm</string>
+    <string name="symp_dry_cough">Cough</string>
+    <string name="symp_headache">Headache</string>
+    <string name="symp_insomnia">Nighttime, Insomnia</string>
+    <string name="symp_confirm">Confirm Symptoms</string>
+    Confirm Symptoms
+    <!--today-->
+    <string name="title_activity_today">Daily Check-up</string>
+    <string name="today_slogan">Your feedback will be used to train your algorithm to make more accurate sickness predictions.</string>
+    <string name="today_energy">Energy Level</string>
+    <string name="today_wellness">Overall Wellness</string>
+    <string name="today_confirm">Confirm</string>
+    <string name="today_report">Report symptoms</string>
+    <string name="title_activity_habits">Habits</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

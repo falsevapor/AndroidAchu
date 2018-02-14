@@ -100,7 +100,24 @@ class CalibrateActivity : AppCompatActivity() {
 
     fun onAccept()
     {
-        finish()
+        val anims = AnimatorSet()
+        val a = ValueAnimator.ofInt(0,1)
+        a.duration = 450
+        a.addListener(object : Animator.AnimatorListener
+        {
+            override fun onAnimationEnd(p0: Animator?)
+            {
+                finish()
+            }
+            override fun onAnimationCancel(p0: Animator?) {
+            }
+            override fun onAnimationRepeat(p0: Animator?) {
+            }
+            override fun onAnimationStart(p0: Animator?) {
+            }
+        })
+        anims.play(a)
+        anims.start()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

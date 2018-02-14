@@ -79,7 +79,7 @@ class CouponFragment : Fragment() {
      */
     interface OnCouponInteractionListener {
         // TODO: Update argument type and name
-        fun onCoupunInteraction(item: Coupon)
+        fun onCouponInteraction(item: Coupon)
     }
 
     companion object {

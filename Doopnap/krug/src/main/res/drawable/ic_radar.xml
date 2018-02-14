@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:viewportWidth="35"
-    android:viewportHeight="35"
-    android:width="35dp"
-    android:height="35dp">
+    android:viewportWidth="36"
+    android:viewportHeight="36"
+    android:width="24dp"
+    android:height="24dp">
     <group
         android:translateX="-204"
-        android:translateY="-1186">
+        android:translateY="-1185">
         <group
             android:translateY="1156">
             <group
                 android:translateX="198"
                 android:translateY="23">
                 <group
-                    android:translateX="7"
-                    android:translateY="8">
+                    android:translateX="6"
+                    android:translateY="6">
                     <path
-                        android:pathData="M16.32 0.95999998c8.509439 0 15.359999 6.85055982 15.359999 15.36000002 0 8.509439 -6.85056 15.359999 -15.359999 15.359999C7.8105598 31.679999 0.95999998 24.829439 0.95999998 16.32 0.95999998 7.8105598 7.8105598 0.95999998 16.32 0.95999998Z"
-                        android:fillColor="#96a4b0" />
+                        android:pathData="M17.747027 0.23351352c9.702487 0 17.513514 7.81102708 17.513514 17.51351348 0 9.702487 -7.811027 17.513514 -17.513514 17.513514 -9.7024864 0 -17.51351348 -7.811027 -17.51351348 -17.513514 0 -9.7024864 7.81102708 -17.51351348 17.51351348 -17.51351348z"
+                        android:fillColor="@color/achuInactiveGrey" />
                     <path
-                        android:pathData="M16.32 0c9.04128 0 16.319999 7.2787199 16.319999 16.32 0 9.04128 -7.278719 16.319999 -16.319999 16.319999C7.2787199 32.639999 0 25.36128 0 16.32 0 7.2787199 7.2787199 0 16.32 0Z"
-                        android:strokeWidth="1.92"
-                        android:strokeColor="#96a4b0" />
+                        android:pathData="M17.824865 9.4183788c4.657194 0 8.406487 3.7492932 8.406487 8.4064862 0 4.657194 -3.749293 8.406487 -8.406487 8.406487 -4.657193 0 -8.4064862 -3.749293 -8.4064862 -8.406487 0 -4.657193 3.7492932 -8.4064862 8.4064862 -8.4064862z"
+                        android:fillColor="@color/achuInactiveGrey" />
                     <path
-                        android:pathData="M16.32 7.6799998c4.78656 0 8.640001 3.8534402 8.640001 8.6400002 0 4.78656 -3.853441 8.640001 -8.640001 8.640001 -4.78656 0 -8.6400002 -3.853441 -8.6400002 -8.640001 0 -4.78656 3.8534402 -8.6400002 8.6400002 -8.6400002z"
-                        android:fillColor="#96a4b0" />
-                    <path
-                        android:pathData="M16.32 6.7199998c5.3184 0 9.600001 4.2816002 9.600001 9.6000002 0 5.3184 -4.281601 9.600001 -9.600001 9.600001 -5.3184 0 -9.6000002 -4.281601 -9.6000002 -9.600001 0 -5.3184 4.2816002 -9.6000002 9.6000002 -9.6000002z"
-                        android:strokeWidth="1.92"
+                        android:pathData="M17.824865 8.4183788c5.211194 0 9.406487 4.1952932 9.406487 9.4064862 0 5.211194 -4.195293 9.406487 -9.406487 9.406487 -5.211193 0 -9.4064862 -4.195293 -9.4064862 -9.406487 0 -5.211193 4.1952932 -9.4064862 9.4064862 -9.4064862z"
+                        android:strokeWidth="2"
                         android:strokeColor="#ffffff" />
                     <path
-                        android:pathData="M16.32 0l0 32.64"
-                        android:strokeWidth="1.92"
+                        android:pathData="M17.824865 0.97297297l0 34.05405403"
+                        android:strokeWidth="2"
                         android:strokeLineCap="square"
                         android:strokeColor="#ffffff" />
                     <path
-                        android:pathData="M32.716802 16.32L0 16.32"
-                        android:strokeWidth="1.92"
+                        android:pathData="M34.751483 17.824865l-34.05405426 0"
+                        android:strokeWidth="2"
                         android:strokeLineCap="square"
                         android:strokeColor="#ffffff" />
                 </group>

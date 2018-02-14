@@ -3,26 +3,64 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chepel.krug.DashboardFragment"
+    tools:_showIn="@layout/fragment_dash"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        style="@style/DashBoardCardTitle"
+    android:layout_height="match_parent">
+
+    <ImageView
+        app:srcCompat="@drawable/ic_sleep_overlay_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/cardTitleArea"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sleep" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/cardTitle"
+            style="@style/DashBoardCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_sleep" />
+        <TextView
+            android:id="@+id/cardValue"
+            style="@style/DashBoardCardValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="+3"
+            />
+        <TextView
+            android:id="@+id/cardTitleSuffix"
+            style="@style/DashBoardCardValueSuffix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Hours" />
+    </LinearLayout>
 
     <ImageView
         app:srcCompat="@drawable/ic_sleep_large"
         style="@style/dashIcon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@+id/progressBL"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBL"
-        app:layout_constraintEnd_toEndOf="@+id/progressBL"
-        app:layout_constraintStart_toStartOf="@+id/progressBL"/>
+        app:layout_constraintTop_toTopOf="@+id/cardProgress"
+        app:layout_constraintBottom_toBottomOf="@+id/cardProgress"
+        app:layout_constraintEnd_toEndOf="@+id/cardProgress"
+        app:layout_constraintStart_toStartOf="@+id/cardProgress"/>
 
     <com.chepel.krug.GaugeProgress
-        android:id="@+id/progressBL"
+        android:id="@+id/cardProgress"
         style="@style/dashGauge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,9 +74,9 @@
         app:trackAlpha="32"
         app:trackColor="#204CAF50"
         app:valueColor="#4CAF50"
+        app:valueSuffix=""
         tools:animateValue="false"
         tools:intro="false"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
         />
+
 </android.support.constraint.ConstraintLayout>

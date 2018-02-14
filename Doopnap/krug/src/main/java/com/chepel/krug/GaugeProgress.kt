@@ -13,10 +13,12 @@ import android.util.AttributeSet
 import android.view.View
 import kotlin.math.abs
 import android.os.Build
+import android.support.v4.view.animation.FastOutLinearInInterpolator
 import android.view.ViewGroup
 import kotlin.math.max
 import kotlin.math.min
 import android.support.v4.view.animation.LinearOutSlowInInterpolator
+import android.util.Log
 import android.widget.TextView
 
 
@@ -25,19 +27,14 @@ import android.widget.TextView
  */
 class GaugeProgress : View {
 
-    class ArgbInterpolator
-    {
+    class ArgbInterpolator {
         private var mDelegate: ArgbInterpolator? = null
-        fun evaluate(fraction: Float, startInt: Int, endInt: Int): Int
-        {
+        fun evaluate(fraction: Float, startInt: Int, endInt: Int): Int {
             val result: Int
 
-            if (mDelegate != null)
-            {
+            if (mDelegate != null) {
                 result = mDelegate!!.evaluate(fraction, startInt, endInt)
-            }
-            else
-            {
+            } else {
                 val startA = startInt shr 24 and 0xff
                 val startR = startInt shr 16 and 0xff
                 val startG = startInt shr 8 and 0xff
@@ -56,14 +53,12 @@ class GaugeProgress : View {
             return result
         }
 
-        private fun withDelegate(delegate: ArgbInterpolator): ArgbInterpolator
-        {
+        private fun withDelegate(delegate: ArgbInterpolator): ArgbInterpolator {
             this.mDelegate = delegate
             return this
         }
 
-        companion object
-        {
+        companion object {
             val newInstance: ArgbInterpolator
                 get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     ArgbInterpolator().withDelegate(ArgbInterpolator())
@@ -73,15 +68,13 @@ class GaugeProgress : View {
         }
     }
 
-    enum class WHMode
-    {
+    enum class WHMode {
         default,
         W,
         H,
     }
 
-    enum class Aligns(val bit:Int)
-    {
+    enum class Aligns(val bit: Int) {
         none(0),
         top(1),
         bottom(2),
@@ -164,13 +157,11 @@ class GaugeProgress : View {
         // values that should fall on pixel boundaries.
         mValueColor = a.getColor(R.styleable.GaugeProgress_valueColor, mValueColor)
         mValueColorN = a.getColor(R.styleable.GaugeProgress_negativeValueColor, mValueColorN)
-        if (a.hasValue(R.styleable.GaugeProgress_valueColors))
-        {
-            val colors  = a.getString(R.styleable.GaugeProgress_valueColors)
+        if (a.hasValue(R.styleable.GaugeProgress_valueColors)) {
+            val colors = a.getString(R.styleable.GaugeProgress_valueColors)
             val valuez = colors.split("[,;: ]".toRegex())
             colorz = IntArray(valuez.size)
-            for (i in 0..(valuez.size-1))
-            {
+            for (i in 0..(valuez.size - 1)) {
                 colorz[i] = Color.parseColor(valuez[i])
             }
         }
@@ -241,27 +232,25 @@ class GaugeProgress : View {
         invalidateTextPaintAndMeasurements(true)
     }
 
-    class ALabel
-    {
+    class ALabel {
         private val paint = TextPaint()
-        var x:Float = 0f
-        var y:Float = 0f
-        var width:Float = 0f
-        var height:Float = 0f
+        var x: Float = 0f
+        var y: Float = 0f
+        var width: Float = 0f
+        var height: Float = 0f
         var value: String = ""
-        var size:Float = 0f
-        var useSize:Boolean = false
-        var color:Int = Color.BLACK
-        var useColor:Boolean = false
-        var align:Int = 0
+        var size: Float = 0f
+        var useSize: Boolean = false
+        var color: Int = Color.BLACK
+        var useColor: Boolean = false
+        var align: Int = 0
 
         /*debug
         val rr:RectF = RectF()
         val rrpaint = Paint()
         */
 
-        fun readSettings(a: TypedArray, valueid:Int, sizeid:Int, colorid:Int, alignid:Int = -1, referenceLabel:ALabel? = null)
-        {
+        fun readSettings(a: TypedArray, valueid: Int, sizeid: Int, colorid: Int, alignid: Int = -1, referenceLabel: ALabel? = null) {
             /*debug
             rrpaint.isAntiAlias = true
             rrpaint.strokeWidth = 1f
@@ -289,35 +278,29 @@ class GaugeProgress : View {
                 paint.textSize = referenceLabel.size
         }
 
-        fun measure(r:RectF, referenceColor:Int = Color.BLACK)
-        {
+        fun measure(r: RectF, referenceColor: Int = Color.BLACK) {
             paint.color = if (useColor) color else referenceColor
 
             val txtr = Rect()
-            paint.getTextBounds("Wqtyipdfghjklb,/;'[]`1!@$%^&*()",0,value.length,txtr) //measure tallest chars
+            paint.getTextBounds("Wqtyipdfghjklb,/;'[]`1!@$%^&*()", 0, value.length, txtr) //measure tallest chars
             width = paint.measureText(value)// txtr.width().toFloat()
             height = txtr.height().toFloat()
 
             x = r.left
             y = r.top + height
 
-            if (0 < (align and Aligns.end.bit))
-            {
+            if (0 < (align and Aligns.end.bit)) {
                 x = r.right - width
             }
-            if (0 < (align and Aligns.bottom.bit))
-            {
+            if (0 < (align and Aligns.bottom.bit)) {
                 y = r.bottom
             }
-            if (0 < (align and Aligns.center.bit))
-            {
-                if (0 == (align and (Aligns.start.bit or Aligns.end.bit)))
-                {
-                    x = r.centerX() - (width/2)
+            if (0 < (align and Aligns.center.bit)) {
+                if (0 == (align and (Aligns.start.bit or Aligns.end.bit))) {
+                    x = r.centerX() - (width / 2)
                 }
-                if (0 == (align and (Aligns.top.bit or Aligns.bottom.bit)))
-                {
-                    y = r.centerY() + (height/2)
+                if (0 == (align and (Aligns.top.bit or Aligns.bottom.bit))) {
+                    y = r.centerY() + (height / 2)
                 }
             }
             /*debug
@@ -325,53 +308,36 @@ class GaugeProgress : View {
             */
         }
 
-        fun alignWith(reference:ALabel, mode:Aligns)
-        {
+        fun alignWith(reference: ALabel, mode: Aligns) {
             if (reference.align != align)
                 return
 
-            when(mode) {
-                Aligns.start ->
-                {
-                    if (0 < (align and Aligns.start.bit))
-                    {
+            when (mode) {
+                Aligns.start -> {
+                    if (0 < (align and Aligns.start.bit)) {
                         reference.x += width
-                    }
-                    else
-                    {
+                    } else {
                         x = reference.x - width
                     }
                 }
-                Aligns.top ->
-                {
-                    if (0 < (align and Aligns.top.bit))
-                    {
+                Aligns.top -> {
+                    if (0 < (align and Aligns.top.bit)) {
                         reference.y += height
-                    }
-                    else
-                    {
+                    } else {
                         y = reference.y - reference.height
                     }
                 }
-                Aligns.end ->
-                {
-                    if (0 < (align and Aligns.end.bit))
-                    {
+                Aligns.end -> {
+                    if (0 < (align and Aligns.end.bit)) {
                         reference.x -= width
-                    }
-                    else
-                    {
+                    } else {
                         x = reference.x + reference.width
                     }
                 }
-                Aligns.bottom ->
-                {
-                    if (0 < (align and Aligns.bottom.bit))
-                    {
+                Aligns.bottom -> {
+                    if (0 < (align and Aligns.bottom.bit)) {
                         reference.y -= height
-                    }
-                    else
-                    {
+                    } else {
                         y = reference.y + height
                     }
                 }
@@ -379,8 +345,7 @@ class GaugeProgress : View {
             }
         }
 
-        fun draw(canvas: Canvas)
-        {
+        fun draw(canvas: Canvas) {
             if (value.isEmpty())
                 return
 
@@ -394,8 +359,7 @@ class GaugeProgress : View {
         }
     }
 
-    private fun invalidateTextPaintAndMeasurements(text:Boolean)
-    {
+    private fun invalidateTextPaintAndMeasurements(text: Boolean) {
         paddingL = paddingLeft.toFloat()
         paddingT = paddingTop.toFloat()
         paddingR = paddingRight.toFloat()
@@ -406,21 +370,20 @@ class GaugeProgress : View {
         contentW = w - paddingL - paddingR
         contentH = h - paddingT - paddingB
 
-        val r:RectF = RectF()
+        val r: RectF = RectF()
         r.left = paddingL
         r.top = paddingT
         r.right = w - paddingR
         r.bottom = h - paddingB
 
-        val half = min(contentW, contentH)/2
-        val centerX = paddingL + contentW/2
-        val centerY = paddingT + contentH/2
+        val half = min(contentW, contentH) / 2
+        val centerX = paddingL + contentW / 2
+        val centerY = paddingT + contentH / 2
 
         rectTrack.set(centerX - half, centerY - half, centerX + half, centerY + half)
         rectMircury.set(centerX - half, centerY - half, centerX + half, centerY + half)
 
-        if (text)
-        {
+        if (text) {
             mainLabel.measure(r, paintMercury.color)
             subLabel.measure(r, mainLabel.color)
             prefix.measure(r, mainLabel.color)
@@ -438,39 +401,33 @@ class GaugeProgress : View {
     }
 
 
-    private val mainLabel:ALabel = ALabel()
-    private val subLabel:ALabel = ALabel()
-    private val prefix:ALabel = ALabel()
-    private val suffix:ALabel = ALabel()
+    private val mainLabel: ALabel = ALabel()
+    private val subLabel: ALabel = ALabel()
+    private val prefix: ALabel = ALabel()
+    private val suffix: ALabel = ALabel()
     //todo: add properties for programmatic access to configuration attributes
 
-    class AnimationRange
-    {
+    class AnimationRange {
         var colorFrom: Int = 0
         var colorTo: Int = 0
         var valueFrom: Float = 0f
         var valueTo: Float = 0f
     }
 
-    private fun colorFromValue(value:Float):Int
-    {
+    private fun colorFromValue(value: Float): Int {
         var res = if (0 > value) mValueColorN else mValueColor
 
-        if (1 < colorz.size)
-        {
+        if (1 < colorz.size) {
             val unitspercolor = (maxF - minF) / (colorz.size - 1)
             val colorindexA = ((value - minF) / unitspercolor).toInt()
             val colorindexB = colorindexA + 1
             res = colorz[colorindexA]
-            if (colorindexB < colorz.size)
-            {
+            if (colorindexB < colorz.size) {
                 val vA = colorindexA * unitspercolor
                 val fraction = ((value - minF) - vA) / unitspercolor
                 res = ArgbInterpolator().evaluate(fraction, colorz[colorindexA], colorz[colorindexB])
             }
-        }
-        else if (colorz.isNotEmpty())
-        {
+        } else if (colorz.isNotEmpty()) {
             res = colorz[0]
         }
 
@@ -480,37 +437,34 @@ class GaugeProgress : View {
     private var externalValuePresenter: TextView? = null
     var valuePresenter: TextView
         get() = externalValuePresenter!!
-        set(v)
-        {
+        set(v) {
             externalValuePresenter = v
 
             updateExtrenalValuePresenter()
         }
 
-    fun updateExtrenalValuePresenter()
-    {
-        if (null != externalValuePresenter)
-        {
+    fun updateExtrenalValuePresenter() {
+        if (null != externalValuePresenter) {
             externalValuePresenter!!.text = prefix.value + mainLabel.value + suffix.value
         }
     }
 
     private var valueF: Float = 0f
     private val animParams: AnimationRange = AnimationRange()
-    private var introVal : Float = 0f
+    private var introVal: Float = 0f
     var value: Float
         get() = valueF
-        set(v)
-        {
+        set(v) {
             val newV = if (v < minF) minF else if (v > maxF) maxF else v
 
-            if (introsteps.done != intro)
-            {
+            if (introsteps.done != intro) {
                 introVal = newV
+                invalidateTextPaintAndMeasurements(false)
                 return
             }
-            if (newV == valueF)
+            if (newV == valueF) {
                 return
+            }
 
             sweep = sweepF
 
@@ -522,8 +476,7 @@ class GaugeProgress : View {
             animParams.colorFrom = animParams.colorTo
             animParams.colorTo = colorFromValue(newV)
 
-            if (!animateV)
-            {
+            if (!animateV) {
                 valueSweep = newV
                 return
             }
@@ -536,20 +489,18 @@ class GaugeProgress : View {
     private var valueSweepF: Float = 0.0f
     var valueSweep: Float
         get() = valueSweepF
-        set(v)
-        {
-            val n:Int = v.toInt()
+        set(v) {
+            val n: Int = v.toInt()
             //mLabelString = "$valueprefix$n$valuesuffix"
             mainLabel.value = if (showplus && 0 < n) "+$n" else "$n"
             updateExtrenalValuePresenter()
 
-            valueSweepF = sweepF * ((v - minF)/(maxF - minF)) - zeroSweep
+            valueSweepF = sweepF * ((v - minF) / (maxF - minF)) - zeroSweep
             if (showminimum && 0f == valueSweepF)
                 valueSweepF = 0.1f
 
             var c = animParams.colorTo
-            if (animParams.colorTo != animParams.colorFrom)
-            {
+            if (animParams.colorTo != animParams.colorFrom) {
                 val vA = min(animParams.valueFrom, animParams.valueTo)
                 val vZ = max(animParams.valueFrom, animParams.valueTo)
                 val backwards: Boolean = animParams.valueFrom > animParams.valueTo
@@ -570,7 +521,7 @@ class GaugeProgress : View {
             invalidateTextPaintAndMeasurements(true)
         }
 
-    private fun animValue(params:AnimationRange)
+    private fun animValue(params: AnimationRange)
     {
         val durRatio = maxAnimationDuration / (maxV - minV)
         val dur = abs(params.valueTo - params.valueFrom) * durRatio
@@ -599,8 +550,7 @@ class GaugeProgress : View {
     private var minF: Float = 0f
     var minV: Float
         get() = minF
-        set(v)
-        {
+        set(v) {
             minF = v
             if (minF > maxF)
                 minF = maxF
@@ -608,11 +558,10 @@ class GaugeProgress : View {
             invalidateTextPaintAndMeasurements(false)
         }
 
-    private var showminimum:Boolean = true
-    var showMinV:Boolean
+    private var showminimum: Boolean = true
+    var showMinV: Boolean
         get() = showminimum
-        set(v)
-        {
+        set(v) {
             showminimum = v
             invalidateTextPaintAndMeasurements(false)
         }
@@ -620,8 +569,7 @@ class GaugeProgress : View {
     private var maxF: Float = 0f
     var maxV: Float
         get() = maxF
-        set(v)
-        {
+        set(v) {
             maxF = v
             if (maxF < minF)
                 maxF = minF
@@ -629,11 +577,10 @@ class GaugeProgress : View {
             invalidateTextPaintAndMeasurements(false)
         }
 
-    private var showplus:Boolean = false
-    var showPlus:Boolean
+    private var showplus: Boolean = false
+    var showPlus: Boolean
         get() = showplus
-        set(v)
-        {
+        set(v) {
             showplus = v
             invalidateTextPaintAndMeasurements(true)
         }
@@ -644,8 +591,7 @@ class GaugeProgress : View {
     private var zeroSweep: Float = 0f
     var startFrom: Float
         get() = startFromF
-        set(v)
-        {
+        set(v) {
             startFromF = v
             calcZero()
             invalidateTextPaintAndMeasurements(false)
@@ -655,23 +601,20 @@ class GaugeProgress : View {
     private var sweepF: Float = 0f
     var sweep: Float
         get() = sweepF
-        set(v)
-        {
+        set(v) {
             sweepF = v
             calcZero()
             invalidateTextPaintAndMeasurements(false)
         }
 
-    private fun calcZero()
-    {
+    private fun calcZero() {
         zeroF = startFromF
         zeroSweep = 0f // all positive > zero at beginning
 
         if (0 > minV && 0 >= maxV) // all negative > zero at end
         {
             zeroSweep = sweepF
-        }
-        else if (0 > minV && 0 < maxV) // zero somewhere in the middle
+        } else if (0 > minV && 0 < maxV) // zero somewhere in the middle
         {
             zeroSweep = (sweepF * abs(minF)) / (maxF - minF)
         }
@@ -681,8 +624,7 @@ class GaugeProgress : View {
     private var trackWidthF: Float = 50.0f
     var trackWidth: Float
         get() = trackWidthF
-        set(v)
-        {
+        set(v) {
             trackWidthF = v
             paintTrack.strokeWidth = trackWidthF
             paintTrackN.strokeWidth = trackWidthF
@@ -709,7 +651,7 @@ class GaugeProgress : View {
             invalidateTextPaintAndMeasurements(false)
         }
 
-    private var trackalpha:Int = 32
+    private var trackalpha: Int = 32
     var trackAlpha: Int
         get() = trackalpha
         set(v) {
@@ -729,8 +671,7 @@ class GaugeProgress : View {
     private var mercuryWidthF: Float = 50.0f
     var mercuryWidth: Float
         get() = mercuryWidthF
-        set(v)
-        {
+        set(v) {
             mercuryWidthF = v
             paintMercury.strokeWidth = mercuryWidthF
             invalidateTextPaintAndMeasurements(false)
@@ -739,16 +680,14 @@ class GaugeProgress : View {
     private var animateV: Boolean = true
     var animateValue: Boolean
         get() = animateV
-        set(v)
-        {
+        set(v) {
             animateV = v
         }
 
     private var aniDuration: Int = 400
     var maxAnimationDuration: Int
         get() = aniDuration
-        set(v)
-        {
+        set(v) {
             aniDuration = v
         }
 
@@ -767,7 +706,6 @@ class GaugeProgress : View {
             sizemode = v
             invalidateTextPaintAndMeasurements(true)
         }
-
 
     enum class introsteps
     {
@@ -809,10 +747,13 @@ class GaugeProgress : View {
 
     private fun animTrack()
     {
+        val wait:Long = 500
+        val d:Long = 400
+
         val anims = AnimatorSet()
         val a = ObjectAnimator.ofFloat(this, "wake", 1f, 0f)
-        a.startDelay = 250
-        a.duration = 400
+        a.startDelay = wait
+        a.duration = d
         //a.interpolator = LinearOutSlowInInterpolator()
         a.interpolator = FastOutSlowInInterpolator()
         //a.interpolator = FastOutLinearInInterpolator()
@@ -829,10 +770,10 @@ class GaugeProgress : View {
             }
         })
         val c = ValueAnimator.ofInt(0,255)
-        c.startDelay = 250
-        c.duration = 400
+        c.startDelay = wait
+        c.duration = d
         //c.interpolator = LinearOutSlowInInterpolator()
-        c.interpolator = FastOutSlowInInterpolator()
+        c.interpolator = FastOutLinearInInterpolator()
         c.addUpdateListener {
             val i = paintWake.color and 0x00ffffff
             paintWake.color = i or ((it.animatedValue as Int) shl 24)

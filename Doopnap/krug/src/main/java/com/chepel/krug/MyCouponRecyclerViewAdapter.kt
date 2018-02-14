@@ -30,7 +30,7 @@ class MyCouponRecyclerViewAdapter(private val mValues: List<Coupon>, private val
         holder.mContentView.text = mValues[position].content
 
         holder.mView.setOnClickListener {
-            mListener?.onCoupunInteraction(item)
+            mListener?.onCouponInteraction(item)
         }
     }
 

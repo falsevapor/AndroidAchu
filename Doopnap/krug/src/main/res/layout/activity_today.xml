@@ -1,50 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:padding="18dp"
+    android:theme="@style/TodayTheme"
     tools:context="com.chepel.krug.TodayActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:layout_margin="0dp"
-        android:padding="0dp"
-        app:elevation="0dp">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/today_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:elevation="0dp"
-            android:layout_margin="0dp"
-            android:padding="0dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/title_activity_today"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:layout_marginRight="56dp"
-                android:layout_marginEnd="56dp"/>
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_today" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:id="@+id/todayTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_accept" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_activity_today"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/todaySlogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayTitle"
+        android:text="@string/today_slogan" />
+
+    <TextView
+        android:id="@+id/todayEnergyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textColor="@color/textColorPrimary"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todaySlogan"
+        android:text="@string/today_energy" />
+
+    <FrameLayout
+        android:id="@+id/layEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="0dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayEnergyTitle"
+        android:background="@drawable/achu_ovel_border"
+        >
+    <RatingBar
+        android:id="@+id/ratingBarEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/achuRatingBar"
+        />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/todayWellnessTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/layEnergy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/today_wellness"
+        />
+
+    <FrameLayout
+        android:id="@+id/layWellness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="0dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayWellnessTitle"
+        android:background="@drawable/achu_ovel_border"
+        >
+
+    <RatingBar
+        android:id="@+id/ratingBarWellness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/achuRatingBar"
+        android:layout_gravity="center_vertical"
+        />
+    </FrameLayout>
+
+
+    <Button
+        android:id="@+id/btnReport"
+        style="@style/achuWhiteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/today_report"
+        app:layout_constraintEnd_toStartOf="@id/btnOK"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layWellness"
+        tools:layout_editor_absoluteX="18dp" />
+
+    <Button
+        android:id="@+id/btnOK"
+        style="@style/achuGreenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/today_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnReport"
+        app:layout_constraintTop_toBottomOf="@+id/layWellness"
+        tools:layout_editor_absoluteX="18dp" />
+
+    <Button
+        android:id="@+id/btn_skip"
+        style="@style/achuCancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/skip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOK"/>
+
+</android.support.constraint.ConstraintLayout>

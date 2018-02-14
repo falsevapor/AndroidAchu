@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chepel.krug.DashboardFragment"
+    tools:_showIn="@layout/fragment_dash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingEnd="32dp"
+        android:paddingRight="32dp"
+        app:srcCompat="@drawable/ic_activity_overlay_bg" />
+
+    <LinearLayout
+        android:id="@+id/cardTitleArea"
+        android:layout_margin="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/cardTitle"
+            style="@style/DashBoardCARDTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_activity" />
+        <TextView
+            android:id="@+id/cardValue"
+            style="@style/DashBoardCARDValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="77%"
+            />
+        <TextView
+            android:id="@+id/cardTitleSuffix"
+            style="@style/DashBoardCARDValueSuffix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_slogan_suffix" />
+    </LinearLayout>
+
+    <ImageView
+        app:srcCompat="@drawable/ic_activities_large"
+        style="@style/dashIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@+id/cardProgress"
+        app:layout_constraintBottom_toBottomOf="@+id/cardProgress"
+        app:layout_constraintEnd_toEndOf="@+id/cardProgress"
+        app:layout_constraintStart_toStartOf="@+id/cardProgress"/>
+
+    <com.chepel.krug.GaugeProgress
+        android:id="@+id/cardProgress"
+        style="@style/dashGaugeRainbow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:animateValue="false"
+        tools:intro="false"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/cardDetailsArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/cardTitleArea"
+        app:layout_constraintStart_toStartOf="@+id/cardTitleArea"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        >
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="2dp"
+            android:scaleType="fitXY"
+            android:tint="@color/achuInactiveGrey"
+            app:srcCompat="@drawable/ic_hr" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:text="@string/card_activity_slogan"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cardDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

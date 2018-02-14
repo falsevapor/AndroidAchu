@@ -97,15 +97,10 @@
 
             <Button
                 android:id="@+id/sign_in_button"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/achuGreenButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:backgroundTint="@color/achuGreen"
-                android:shadowColor="#80000000"
-                android:shadowDx="0"
-                android:shadowDy="3"
-                android:shadowRadius="10"
                 android:text="@string/action_sign_in"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -118,7 +113,7 @@
                 android:layout_marginTop="0dp"
                 android:text="Forgot password?"
                 android:textAllCaps="false"
-                android:textColor="@color/achuGreen"
+                android:textColor="@color/achuAltGreen"
                 android:visibility="invisible"
                 tools:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@id/sign_in_button" />

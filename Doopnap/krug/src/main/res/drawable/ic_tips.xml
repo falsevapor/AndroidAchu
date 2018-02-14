@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:viewportWidth="24"
+    android:viewportWidth="25"
     android:viewportHeight="37"
-    android:width="24dp"
-    android:height="37dp">
+    android:width="16dp"
+    android:height="24dp">
     <group
         android:translateX="-348"
         android:translateY="-1184">
@@ -17,11 +17,11 @@
                     android:translateY="6">
                     <path
                         android:pathData="M15.568434 27.84c0 -6.611986 3.135232 -8.699982 3.135232 -8.699982 4.354488 -4.349991 4.570471 -11.529216 0.219466 -15.8792069 -4.353173 -4.3477481 -11.4100757 -4.3477481 -15.763249 0 -4.3544887 4.3499909 -4.13850602 11.5292159 0.2159826 15.8792069 0 0 3.1352318 2.087996 3.1352318 8.699982l9.0573366 0z"
-                        android:strokeWidth="1.92"
-                        android:fillColor="#96a4b0"
+                        android:strokeWidth="2"
+                        android:fillColor="#b6c0c8"
                         android:strokeLineJoin="round"
                         android:strokeLineCap="round"
-                        android:strokeColor="#96a4b0" />
+                        android:strokeColor="@color/achuInactiveGrey" />
                     <path
                         android:pathData="M11.04 15.84l0 10.603547"
                         android:strokeWidth="1.92"
@@ -34,14 +34,14 @@
                         android:strokeColor="#ffffff" />
                     <path
                         android:pathData="M7.2 31.2l7.739767 0"
-                        android:strokeWidth="1.92"
+                        android:strokeWidth="2"
                         android:strokeLineCap="square"
-                        android:strokeColor="#96a4b0" />
+                        android:strokeColor="@color/achuInactiveGrey" />
                     <path
                         android:pathData="M8.64 34.56l4.8 0"
-                        android:strokeWidth="1.92"
+                        android:strokeWidth="2"
                         android:strokeLineCap="square"
-                        android:strokeColor="#96a4b0" />
+                        android:strokeColor="@color/achuInactiveGrey" />
                 </group>
             </group>
         </group>

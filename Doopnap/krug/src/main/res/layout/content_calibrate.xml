@@ -10,7 +10,8 @@
     android:fitsSystemWindows="true"
     android:padding="16dp"
     android:weightSum="3"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ContentDescription">
 
     <LinearLayout
         android:baselineAligned="false"
@@ -35,12 +36,6 @@
                     app:srcCompat="@drawable/ic_symptom_01"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
-                <!--
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/tophotcard"
-                    android:alpha="0.5"/>-->
             </android.support.v7.widget.CardView>
 
             <TextView
@@ -48,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Runny Nose &amp; sneezing"
+                android:text="@string/symp_nose_run"
                 app:layout_constraintEnd_toEndOf="@+id/symp1"
                 app:layout_constraintStart_toStartOf="@+id/symp1"
                 app:layout_constraintTop_toBottomOf="@+id/symp1" />
@@ -90,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Nasal Congestion"
+                android:text="@string/symp_congest"
                 app:layout_constraintEnd_toEndOf="@+id/symp2"
                 app:layout_constraintStart_toStartOf="@+id/symp2"
                 app:layout_constraintTop_toBottomOf="@+id/symp2" />
@@ -131,7 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Sinus pressure &amp; Pain"
+                android:text="@string/symp_sinus"
                 app:layout_constraintEnd_toEndOf="@+id/symp3"
                 app:layout_constraintStart_toStartOf="@+id/symp3"
                 app:layout_constraintTop_toBottomOf="@+id/symp3" />
@@ -180,7 +175,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Sore Throat Pain"
+                android:text="@string/symp_sore_throat"
                 app:layout_constraintEnd_toEndOf="@+id/symp4"
                 app:layout_constraintStart_toStartOf="@+id/symp4"
                 app:layout_constraintTop_toBottomOf="@+id/symp4" />
@@ -222,7 +217,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Fever, Aches &amp; Chills"
+                android:text="@string/symp_fever"
                 app:layout_constraintEnd_toEndOf="@+id/symp5"
                 app:layout_constraintStart_toStartOf="@+id/symp5"
                 app:layout_constraintTop_toBottomOf="@+id/symp5" />
@@ -263,7 +258,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Cough with Mucus &amp; Phlegm"
+                android:text="@string/symp_wet_cough"
                 app:layout_constraintEnd_toEndOf="@+id/symp6"
                 app:layout_constraintStart_toStartOf="@+id/symp6"
                 app:layout_constraintTop_toBottomOf="@+id/symp6" />
@@ -312,7 +307,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Cough"
+                android:text="@string/symp_dry_cough"
                 app:layout_constraintEnd_toEndOf="@+id/symp7"
                 app:layout_constraintStart_toStartOf="@+id/symp7"
                 app:layout_constraintTop_toBottomOf="@+id/symp7" />
@@ -354,7 +349,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Headache"
+                android:text="@string/symp_headache"
                 app:layout_constraintEnd_toEndOf="@+id/symp8"
                 app:layout_constraintStart_toStartOf="@+id/symp8"
                 app:layout_constraintTop_toBottomOf="@+id/symp8" />
@@ -395,7 +390,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 style="@style/calibrateText"
-                android:text="Nighttime, Insomnia"
+                android:text="@string/symp_insomnia"
                 app:layout_constraintEnd_toEndOf="@+id/symp9"
                 app:layout_constraintStart_toStartOf="@+id/symp9"
                 app:layout_constraintTop_toBottomOf="@+id/symp9" />
@@ -413,12 +408,12 @@
                 />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/btnOK"
         style="@style/achuGreenButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm Symptoms"
         android:layout_margin="8dp"
-        />
+        android:text="@string/symp_confirm" />
 </LinearLayout>

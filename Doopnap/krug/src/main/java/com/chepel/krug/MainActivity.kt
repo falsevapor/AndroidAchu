@@ -1,5 +1,8 @@
 package com.chepel.krug
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,12 +14,22 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.widget.Button
+import android.widget.Toast
 import com.chepel.krug.dummy.CouponsContent
 import com.chepel.krug.dummy.TipsContent
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import java.util.*
+import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.support.v7.app.AlertDialog
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.RatingBar
+
 
 class MainActivity :
         AppCompatActivity(),
@@ -41,39 +54,12 @@ class MainActivity :
     private val offers = CouponFragment()
     private val rewards = RewardsFragment()
 
-    //val btns = arrayOf(btn_dash, btn_radar, btn_tips,  btn_offers, btn_rewards)
+    private var btns = mutableListOf<Button>()
+    private val titles = intArrayOf(R.string.title_dashboard, R.string.title_radar, R.string.title_tips, R.string.title_offers, R.string.title_rewards)
 
-    /*
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_dashboard -> {
-                viewpager.currentItem = 0
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_tips -> {
-                viewpager.currentItem = 1
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_offers -> {
-                viewpager.currentItem = 2
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_radar -> {
-                viewpager.currentItem = 3
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_rewards -> {
-                viewpager.currentItem = 3
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-    */
-
-    var btns = mutableListOf<Button>()
-    val titles = intArrayOf(R.string.title_dashboard, R.string.title_radar, R.string.title_tips, R.string.title_offers, R.string.title_rewards)
+    var runtime:Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         val finish = intent.getBooleanExtra("sign_out", false)
         if (finish)
@@ -82,6 +68,8 @@ class MainActivity :
             finish()
             return
         }
+
+        runtime = intent.getBooleanExtra("runtime", false)
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -118,13 +106,6 @@ class MainActivity :
                 selectBottomTabButton(position)
             }
         })
-
-        /*
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        */
     }
 
     override fun onStart() {
@@ -137,6 +118,114 @@ class MainActivity :
         btns.add(btn_rewards)
     }
 
+    private var showGoodMorning:Boolean = true
+
+    override fun onResume() {
+        super.onResume()
+
+        val me = My(this)
+        me.load()
+
+        val goodMorning = true//intent.getBooleanExtra("goodMorning", false)
+
+        if (goodMorning && showGoodMorning)
+        {
+            val cal = Calendar.getInstance()
+            val h = cal.get(Calendar.HOUR_OF_DAY)
+            var greet = getString(R.string.hello)
+            when (h)
+            {
+                in 4..10 -> greet = getString(R.string.goodMorning)
+                in 11..13 -> greet = getString(R.string.goodDay)
+                in 14..16 -> greet = getString(R.string.goodAfternoon)
+                in 17..20 -> greet = getString(R.string.goodEvening)
+            }
+
+            Toast.makeText(this, greet, Toast.LENGTH_SHORT).show()
+            //val intent = Intent(this,  TodayActivity::class.java)
+            //startActivity(intent)
+            showGoodMorning = false
+            showTodayDialog()
+        }
+        else
+            initUI("onResume")
+    }
+
+    private fun showTodayDialog()
+    {
+        val builder = AlertDialog.Builder(this)
+        // Get the layout inflater
+        val inflater = layoutInflater
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.activity_today, null))
+        val d = builder.create()
+        d.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        d.show()
+        val btnOk = d.findViewById<Button>(R.id.btnOK)
+        val btnSkip = d.findViewById<Button>(R.id.btn_skip)
+        val btnReport = d.findViewById<Button>(R.id.btnReport)
+        val rbEnergy = d.findViewById<RatingBar>(R.id.ratingBarEnergy)
+        val rbWellness = d.findViewById<RatingBar>(R.id.ratingBarWellness)
+        btnOk?.setOnClickListener { view ->
+            Toast.makeText(this, "Thank you for report", Toast.LENGTH_SHORT).show()
+            onTodayDialogResult(d, R.id.btnOK)
+        }
+        btnReport?.setOnClickListener { view ->
+            onTodayDialogResult(d, R.id.btnReport)
+            Toast.makeText(this, "Identify new symptoms", Toast.LENGTH_SHORT).show()
+        }
+        btnSkip?.setOnClickListener { view ->
+            onTodayDialogResult(d, R.id.btn_skip)
+        }
+    }
+
+    fun onTodayDialogResult(d:AlertDialog, n:Int)
+    {
+        val anims = AnimatorSet()
+        val a = ValueAnimator.ofInt(0,1)
+        a.duration = 450
+        a.addListener(object : Animator.AnimatorListener
+        {
+            override fun onAnimationEnd(p0: Animator?)
+            {
+                when(n)
+                {
+                    R.id.btnOK -> onTodayReport()
+                    R.id.btnReport -> onTodayNewSymptoms()
+                }
+                d.dismiss()
+                initUI("onTodayDialogResult")
+            }
+            override fun onAnimationCancel(p0: Animator?) {
+            }
+            override fun onAnimationRepeat(p0: Animator?) {
+            }
+            override fun onAnimationStart(p0: Animator?) {
+            }
+        })
+        anims.play(a)
+        anims.start()
+    }
+
+    fun initUI(str:String)
+    {
+        dash.readyForLoad = true
+        dash.updateValues(runtime, "act:initUI:"+str)
+    }
+
+    fun onTodayReport()
+    {
+
+    }
+
+    fun onTodayNewSymptoms()
+    {
+        onShowCalibration()
+    }
+
+
     fun selectBottomTabButton(n:Int)
     {
         if (0 > n || btns.size <= n)
@@ -148,7 +237,7 @@ class MainActivity :
         the_title.text = getString(titles[n])
     }
 
-    fun onTab(n:Int)
+    private fun onTab(n:Int)
     {
         selectBottomTabButton(n)
         viewpager.currentItem = n
@@ -177,7 +266,7 @@ class MainActivity :
         return super.onOptionsItemSelected(item)
     }
 
-    fun onShowSettings():Boolean
+    private fun onShowSettings():Boolean
     {
         val intent = Intent(this,  SettingsActivity::class.java)
         intent.putExtra("Settings extra", "Logeen sukses")
@@ -186,7 +275,7 @@ class MainActivity :
         return true
     }
 
-    fun onShowCalibration():Boolean
+    private fun onShowCalibration():Boolean
     {
         val intent = Intent(this,  CalibrateActivity::class.java)
         startActivity(intent)
@@ -206,7 +295,7 @@ class MainActivity :
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCoupunInteraction(item: CouponsContent.Coupon) {
+    override fun onCouponInteraction(item: CouponsContent.Coupon) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dash"
+        android:icon="@drawable/ic_dashboard"
         android:title="@string/title_dashboard"
         app:showAsAction="always|withText" />
 
@@ -16,19 +16,19 @@
 
     <item
         android:id="@+id/navigation_tips"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_tips"
         android:title="@string/title_tips"
         app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/navigation_offers"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_offers"
         android:title="@string/title_offers"
         app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/navigation_rewards"
-        android:icon="@drawable/ic_accept"
+        android:icon="@drawable/ic_rewards"
         android:title="rewards"
         app:showAsAction="always|withText" />
 </menu>

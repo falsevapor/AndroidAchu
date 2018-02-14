@@ -4,6 +4,12 @@ import android.content.Context
 import android.preference.PreferenceManager
 import java.text.SimpleDateFormat
 import java.util.*
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
+
+
+
+
 
 
 /**
@@ -256,3 +262,35 @@ class My(_context: Context)
     }
 }
 
+class DataBit(ctx:Context,  var id:Int, var nameResID:Int, var prefixResID:Int, var suffixResID:Int, var iconResID:Int, var value:Double, var type:DataBitType = DataBitType.percent)
+{
+    enum class DataBitType
+    {
+        percent,
+        length,
+        weight,
+        temperature,
+        time,
+    }
+
+    var drawable:Drawable? = null
+
+    init {
+        drawable = ContextCompat.getDrawable(ctx, iconResID)
+    }
+
+
+    val isWhole:Boolean
+        get () = 0.0 == (value - value.toInt())
+
+    val valueForUI: String
+        get()
+        {
+            val n = value.toInt()
+            when (type)
+            {
+                DataBitType.percent -> { if (isWhole) return "$n%" else return "$value%"}
+            }
+            return value.toString()
+        }
+}

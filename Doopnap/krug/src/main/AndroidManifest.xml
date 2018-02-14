@@ -43,7 +43,7 @@
         <activity
             android:name=".TodayActivity"
             android:label="@string/title_activity_today"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".MyInfoActivity"
             android:label="@string/title_activity_my_info"
@@ -62,7 +62,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".HabitsActivity"
+            android:label="@string/title_activity_habits"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
