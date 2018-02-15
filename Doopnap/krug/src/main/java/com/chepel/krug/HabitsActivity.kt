@@ -1,12 +1,10 @@
 package com.chepel.krug
 
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -15,9 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 
 import kotlinx.android.synthetic.main.activity_habits.*
-import kotlinx.android.synthetic.main.fragment_habits.view.*
 
 class HabitsActivity : AppCompatActivity() {
+
+    private val intro = HabitsIntroFragment()
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
@@ -30,6 +29,8 @@ class HabitsActivity : AppCompatActivity() {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.)))
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_habits)
 
@@ -68,48 +69,45 @@ class HabitsActivity : AppCompatActivity() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm)
+    {
+        override fun getItem(position: Int): Fragment
+        {
+            if (0 == position)
+            {
+                return intro
+            }
 
-        override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1)
+            return HabitsStepFragment.newInstance(position)
         }
 
-        override fun getCount(): Int {
-            // Show 3 total pages.
-            return 3
+        override fun getCount(): Int
+        {
+            return 5
         }
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    class PlaceholderFragment : Fragment() {
-
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
+    class HabitsStepFragment: Fragment()
+    {
+        var step:Int = 0
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        {
             val rootView = inflater.inflate(R.layout.fragment_habits, container, false)
             //rootView.section_label.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
+
             return rootView
         }
 
-        companion object {
-            /**
-             * The fragment argument representing the section number for this
-             * fragment.
-             */
-            private val ARG_SECTION_NUMBER = "section_number"
+        companion object
+        {
+            class Text (var title:String, var slogan:String, var next:String)
+            {
+            }
+            var texts = ArrayList<Text>()
 
-            /**
-             * Returns a new instance of this fragment for the given section
-             * number.
-             */
-            fun newInstance(sectionNumber: Int): PlaceholderFragment {
-                val fragment = PlaceholderFragment()
-                val args = Bundle()
-                args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-                fragment.arguments = args
+            fun newInstance(position: Int): HabitsStepFragment {
+                val fragment = HabitsStepFragment()
+                fragment.step = position
                 return fragment
             }
         }
