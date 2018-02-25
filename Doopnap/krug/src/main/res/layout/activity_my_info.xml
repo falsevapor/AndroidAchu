@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    android:theme="@style/CalibrateTheme"
-    tools:context="com.chepel.krug.MyInfoActivity">
+    android:orientation="vertical"
+    tools:context="com.chepel.krug.MyInfoActivity"
+    tools:ignore="ContentDescription">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/theappbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="0dp"
         android:padding="0dp"
         app:elevation="0dp">
@@ -25,47 +29,356 @@
             android:padding="0dp"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/title_activity_my_info"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:layout_marginRight="56dp"
-                android:layout_marginEnd="56dp"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_my_info"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="32dp"
+        android:paddingStart="32dp"
+        android:paddingRight="32dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="24dp"
+        >
+
+        <TextView
+            android:id="@+id/my_info_title"
+            style="@style/achuATitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_to_achu"
+            />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/full_name_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@id/my_info_title"
+        android:background="@drawable/achu_rounded_border"
+        >
+        <ImageView
+            android:id="@+id/icon_name"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/icon_name_last"
+            app:srcCompat="@drawable/name_icon_selector" />
+        <ImageView
+            android:id="@+id/icon_name_last"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_name"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/my_name"
+            style="@style/achuEditBox"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/prompt_name"
+            android:inputType="textCapWords"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icon_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/my_last_name"
+            />
+
+        <EditText
+            android:id="@+id/my_last_name"
+            style="@style/achuEditBox"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/prompt_lastname"
+            android:inputType="textCapWords"
+            android:selectAllOnFocus="false"
+            app:layout_constraintTop_toBottomOf="@id/my_name"
+            app:layout_constraintStart_toEndOf="@id/icon_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/age_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_frame"
+        android:background="@drawable/achu_rounded_border"
+        android:layout_marginTop="16dp"
+        >
+        <ImageView
+            android:id="@+id/icon_age"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/age_icon_selector" />
+
+        <EditText
+            android:id="@+id/edAge"
+            style="@style/achuEditBox"
+            android:selectAllOnFocus="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@+id/icon_age"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:inputType="number"
+            android:hint="@string/label_age"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/height_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/age_frame"
+        android:background="@drawable/achu_rounded_border"
+        android:layout_marginTop="16dp"
+        >
+        <ImageView
+            android:id="@+id/icon_height"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/height_icon_selector"/>
+
+        <EditText
+            android:id="@+id/edHeight"
+            style="@style/achuEditBox"
+            android:selectAllOnFocus="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toEndOf="@+id/icon_height"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/labelIN"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="@string/label_height"/>
+
+        <!--
+        <TextView
+            android:id="@+id/labelFTM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FT"
+            android:padding="8dp"
+            android:textColor="@drawable/text_color_selector"
+            app:layout_constraintStart_toEndOf="@id/edHeight"
+            app:layout_constraintEnd_toStartOf="@+id/edHeightIn"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edHeight"
+            />
+
+        <EditText
+            android:id="@+id/edHeightIn"
+            style="@style/achuEditBox"
+            android:selectAllOnFocus="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toEndOf="@+id/labelFTM"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/labelIN"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        -->
+        <TextView
+            android:id="@+id/labelIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingEnd="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="IN"
+            android:textColor="@drawable/text_achucolor_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edHeight"
+            app:layout_constraintEnd_toStartOf="@+id/labelCM"
+            app:layout_constraintStart_toEndOf="@id/edHeight" />
+
+        <TextView
+            android:id="@+id/labelCM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:paddingStart="4dp"
+            android:paddingTop="8dp"
+            android:text="CM"
+            android:textColor="@drawable/text_achucolor_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/labelIN" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/weight_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/height_frame"
+        android:background="@drawable/achu_rounded_border"
+        android:layout_marginTop="16dp"
+        >
+        <ImageView
+            android:id="@+id/icon_weight"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/weight_icon_selector" />
+
+        <EditText
+            android:id="@+id/edWeight"
+            style="@style/achuEditBox"
+            android:selectAllOnFocus="true"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toEndOf="@+id/icon_weight"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/labelLB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="@string/label_weight"/>
+
+        <TextView
+            android:id="@+id/labelLB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingEnd="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="LB"
+            android:textColor="@drawable/text_achucolor_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edWeight"
+            app:layout_constraintEnd_toStartOf="@+id/labelKG"
+            app:layout_constraintStart_toEndOf="@id/edWeight" />
+
+        <TextView
+            android:id="@+id/labelKG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:paddingStart="4dp"
+            android:paddingTop="8dp"
+            android:text="KG"
+            android:textColor="@drawable/text_achucolor_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edWeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/labelLB" />
+
+    </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
+            android:id="@+id/lbl_boy"
+            android:theme="@style/MyInfoTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/label_male"
+            android:textColor="@drawable/text_color_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/switch_sex"
+            app:layout_constraintEnd_toStartOf="@+id/switch_sex"
+            />
+
+        <android.support.v7.widget.SwitchCompat
+            android:layout_margin="16dp"
+            android:id="@+id/switch_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:thumb="@drawable/mw_thumb_selector"
+            app:track="@drawable/achu_switch_track"
+            app:layout_constraintTop_toBottomOf="@+id/weight_frame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/lbl_girl"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:theme="@style/MyInfoTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/label_female"
+            android:textColor="@drawable/text_color_selector"
+            app:layout_constraintBaseline_toBaselineOf="@+id/switch_sex"
+            app:layout_constraintStart_toEndOf="@+id/switch_sex"
+            />
+
+    <Button
+        android:id="@+id/btnOK"
+        style="@style/achuGreenButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back_2_signin"
+        android:text="@string/doit"/>
+
+    <LinearLayout
+        android:id="@+id/back_2_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theappbar"/>
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_account"
+            />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_accept" />
+        <Button
+            android:id="@+id/btn_skip"
+            style="@style/achuCancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/achuAltGreen"
+            android:text="@string/sign_in_excl"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="4dp"
+            android:paddingStart="4dp"
+            android:paddingRight="4dp"
+            android:paddingEnd="4dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            />
 
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="?attr/selectableItemBackground"
-        android:textColor="@color/textColorPrimary"
-        android:text="skip"
-        />
-
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>
+</LinearLayout>

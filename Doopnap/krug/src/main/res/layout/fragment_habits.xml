@@ -13,27 +13,43 @@
         android:id="@+id/stepTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/textColorPrimary"
+        android:textSize="16sp"
+        android:textAllCaps="true"
+        android:textColor="@color/textColorSecondary"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Do you even? Bro!"/>
+        tools:text="@string/habit_title_1"/>
 
     <TextView
         android:id="@+id/step"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@id/stepTitle"
+        app:layout_constraintEnd_toStartOf="@+id/steps"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="monospace"
+        android:textColor="@color/textColorSecondary"
         app:layout_constraintBaseline_toBaselineOf="@id/stepTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="2/4"/>
+        tools:text="/4" />
 
     <TextView
         android:id="@+id/stepSlogan"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintTop_toBottomOf="@id/stepTitle"
-        tools:text="The fish fly at night"/>
+        tools:text="@string/habit_slogan_1"/>
 
     <RadioGroup
         android:layout_marginTop="32dp"
@@ -44,23 +60,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         >
 
-        <RadioButton
+        <android.support.v7.widget.AppCompatRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/yes" />
-        <RadioButton
+            app:buttonTint="@color/achuAltGreen"
+            android:textColor="@drawable/text_color_selector"
+            android:text="@string/no" />
+        <android.support.v7.widget.AppCompatRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no"
+            app:buttonTint="@color/achuAltGreen"
+            android:textColor="@drawable/text_color_selector"
+            android:text="@string/yes"
             />
-        <RadioButton
+        <android.support.v7.widget.AppCompatRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:buttonTint="@color/achuAltGreen"
+            android:textColor="@drawable/text_color_selector"
             android:text="@string/habit_casually"
+            tools:checked="true"
             />
-        <RadioButton
+        <android.support.v7.widget.AppCompatRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:buttonTint="@color/achuAltGreen"
+            android:textColor="@drawable/text_color_selector"
             android:text="@string/notsay"
             />
 

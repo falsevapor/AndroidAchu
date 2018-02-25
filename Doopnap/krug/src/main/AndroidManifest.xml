@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <!--TODO fix application warnings here-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -66,7 +67,7 @@
         <activity
             android:name=".HabitsActivity"
             android:label="@string/title_activity_habits"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

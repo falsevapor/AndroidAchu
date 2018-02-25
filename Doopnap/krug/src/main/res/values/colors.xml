@@ -5,6 +5,9 @@
     <color name="achuLightGreen">#70D79B</color>
     <color name="achuAltGreen">#44c4a1</color>
     <color name="achuInactiveGrey">#b6c0c8</color>
+    <color name="achu75Grey">#c5cdd3</color>
+    <color name="achuMedGrey">#d5dadf</color>
+    <color name="achu25Grey">#e4e7df</color>
     <color name="achuLightGrey">#f4f5f7</color>
 
 
@@ -12,7 +15,7 @@
     <color name="colorPrimaryDark">#00ffffff</color>
     <color name="colorAccent">#FF4081</color>
     <color name="textColorPrimary">#404040</color>
-    <color name="textColorSecondary">#808080</color>
+    <color name="textColorSecondary">#96a4b0</color>
     <color name="colorControlNormal">#ffd0d0d0</color>
 
     <color name="toolbarTextColorPrimary">#ff101030</color>

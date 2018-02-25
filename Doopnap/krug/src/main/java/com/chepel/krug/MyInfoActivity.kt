@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_my_info.*
-import kotlinx.android.synthetic.main.content_my_info.*
 import android.content.DialogInterface
 import android.view.MenuItem
 import android.view.View
 import android.widget.NumberPicker
 import java.util.*
 import android.app.Activity
+import android.graphics.Typeface
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.WindowManager
@@ -31,26 +31,67 @@ class MyInfoActivity : AppCompatActivity() {
         supportActionBar!!.setHomeButtonEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        btn_ok.setOnClickListener { view ->
-            save()
-            StartMainActivity()
+        btnOK.setOnClickListener {
+            startActivity(Intent(this,  HabitsActivity::class.java))
+            finish()
         }
 
-        btn_skip.setOnClickListener { StartMainActivity() }
+        btn_skip.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
-        my_sex.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) onSex() }
-        my_sex.setOnClickListener { onSex() }
+        my_name.setOnFocusChangeListener { v, hasFocus ->
+            icon_name.isSelected = hasFocus || my_name.text.toString().isNotEmpty() || my_last_name.text.toString().isNotEmpty()
+        }
+        my_last_name.setOnFocusChangeListener { v, hasFocus ->
+            icon_name.isSelected = hasFocus || my_name.text.toString().isNotEmpty() || my_last_name.text.toString().isNotEmpty()
+        }
+        edAge.setOnFocusChangeListener { v, hasFocus ->
+            icon_age.isSelected = hasFocus || edAge.text.toString().isNotEmpty()
+        }
+        edHeight.setOnFocusChangeListener { v, hasFocus ->
+            icon_height.isSelected = hasFocus || edHeight.text.toString().isNotEmpty()
+        }
+        edWeight.setOnFocusChangeListener { v, hasFocus ->
+            icon_weight.isSelected = hasFocus || edWeight.text.toString().isNotEmpty()
+        }
 
-        my_age.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) onAge() }
-        my_age.setOnClickListener { onAge() }
+        switch_sex.setOnCheckedChangeListener { buttonView, isChecked ->
+            lbl_boy.isSelected = !isChecked
+            lbl_girl.isSelected = isChecked
+        }
 
-        my_weight.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) onWeight() }
-        my_weight.setOnClickListener { onWeight() }
+        labelLB.setOnClickListener {
+            on_units(false)
+        }
+        labelKG.setOnClickListener {
+            on_units(true)
+        }
 
-        my_height.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus -> if (hasFocus) onHeight() }
-        my_height.setOnClickListener { onHeight() }
+        labelIN.setOnClickListener {
+            on_units(false)
+        }
+        labelCM.setOnClickListener {
+            on_units(true)
+        }
+        //switch_units.setOnCheckedChangeListener { bv, isChecked -> onUnits(isChecked) }
+    }
 
-        switch_units.setOnCheckedChangeListener { bv, isChecked -> onUnits(isChecked) }
+    fun on_units(metrik:Boolean)
+    {
+        val tf4metric = if (metrik) Typeface.DEFAULT_BOLD else Typeface.DEFAULT
+        val tf4imperial = if (metrik) Typeface.DEFAULT else Typeface.DEFAULT_BOLD
+
+        labelKG.isSelected = metrik
+        labelKG.typeface = tf4metric
+        labelCM.isSelected = metrik
+        labelCM.typeface = tf4metric
+
+        labelLB.isSelected = !metrik
+        labelLB.typeface = tf4imperial
+        labelIN.isSelected = !metrik
+        labelIN.typeface = tf4imperial
     }
 
     override fun onResume() {
@@ -61,12 +102,8 @@ class MyInfoActivity : AppCompatActivity() {
         val register = intent.getBooleanExtra("register", false)
         val vis = if (register) View.VISIBLE else View.GONE
         btn_skip.visibility = vis
-        btn_ok.visibility = vis
-
-        lbl_units.visibility = vis
-        lbl_imperial.visibility = vis
-        switch_units.visibility = vis
-        lbl_metric.visibility = vis
+        //switch_units.visibility = vis
+        //lbl_metric.visibility = vis
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
@@ -87,24 +124,16 @@ class MyInfoActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun StartMainActivity()
-    {
-        val intent = Intent(this,  MainActivity::class.java)
-        intent.putExtra("Login extra", "Logeen sukses")
-        startActivity(intent)
-        finish()
-    }
-
     fun readPrefs()
     {
         val p = PreferenceManager.getDefaultSharedPreferences(this)
-        switch_units.isChecked = ("0" == p.getString(getString(R.string.opts_units), "0"))
+        //switch_units.isChecked = ("0" == p.getString(getString(R.string.opts_units), "0"))
     }
 
     fun save()
     {
         val p = PreferenceManager.getDefaultSharedPreferences(this).edit()
-        p.putString(getString(R.string.opts_units), if (switch_units.isChecked) "0" else "1")
+        //p.putString(getString(R.string.opts_units), if (switch_units.isChecked) "0" else "1")
         p.apply()
     }
 
@@ -117,7 +146,7 @@ class MyInfoActivity : AppCompatActivity() {
         dlg.setTitle(R.string.prompt_sex)
                 .setItems(R.array.genders, DialogInterface.OnClickListener { dialog, which ->
                     val genders = resources.getStringArray(R.array.genders)
-                    my_sex.setText(genders[which])
+//                    my_sex.setText(genders[which])
                     // The 'which' argument contains the index position
                     // of the selected item
                 })
@@ -140,22 +169,22 @@ class MyInfoActivity : AppCompatActivity() {
         num!!.wrapSelectorWheel = false
         num.minValue = 1900
         num.maxValue = thisyear
-        val def = my_age.text.toString()
-        num.value = if (def.isEmpty()) thisyear else def.toInt()
+  //      val def = my_age.text.toString()
+  //      num.value = if (def.isEmpty()) thisyear else def.toInt()
 
         dlg.setPositiveButton(android.R.string.ok, DialogInterface.OnClickListener { dialog, id ->
-            my_age.setText(num.value.toString())// User clicked OK button
+//            my_age.setText(num.value.toString())// User clicked OK button
         })
         dlg.create().show()
     }
 
     private fun onWeight()
     {
-        val metrik = switch_units.isChecked
+        val metrik = true//switch_units.isChecked
         val dlg = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_picknumber, null)
-        dlg.setTitle(R.string.prompt_weight)
-                .setView(dialogView)
+        //dlg.setTitle(R.string.prompt_weight)
+        //        .setView(dialogView)
 
         val num = dialogView.findViewById<NumberPicker>(R.id.the_number)
         num!!.wrapSelectorWheel = false
@@ -163,9 +192,9 @@ class MyInfoActivity : AppCompatActivity() {
         num.maxValue = 5000
 
         var x:Double = 0.0
-        if (my_weight.getTag(R.string.numtag) is Double)
+    //    if (my_weight.getTag(R.string.numtag) is Double)
         {
-            x = my_weight.getTag(R.string.numtag) as Double
+      //      x = my_weight.getTag(R.string.numtag) as Double
         }
         if (!metrik)
             x /= 0.453592
@@ -183,26 +212,26 @@ class MyInfoActivity : AppCompatActivity() {
 
     fun setWeight(w:Int)
     {
-        val metrik = switch_units.isChecked
+        val metrik = true//switch_units.isChecked
         val s = "$w " + if (metrik) getString(R.string.kg) else getString(R.string.lb)
-        my_weight.setText(s)
+        //my_weight.setText(s)
 
         var f:Double = w.toDouble()
         if (!metrik)
             f *= 0.453592
-        my_weight.setTag(R.string.numtag, f)
+//        my_weight.setTag(R.string.numtag, f)
     }
 
     fun setHeight(H:Int, h:Int)
     {
-        val metrik = switch_units.isChecked
+        val metrik = true//switch_units.isChecked
 
         var s = "$H "
         if (metrik)
             s += getString(R.string.m) + " $h " + getString(R.string.cm)
         else
             s += getString(R.string.ft) + " $h " + getString(R.string.in4)
-        my_height.setText(s)
+  //      my_height.setText(s)
 
         val m = if (metrik) 100 else 12
         val Hh = H * m + h
@@ -210,16 +239,16 @@ class MyInfoActivity : AppCompatActivity() {
         var f:Double = Hh.toDouble()
         if (!metrik)
             f *= 2.54
-        my_height.setTag(R.string.numtag, f)
+    //    my_height.setTag(R.string.numtag, f)
     }
 
     private fun onHeight()
     {
-        val metrik = switch_units.isChecked
+        val metrik = true//switch_units.isChecked
         val dlg = AlertDialog.Builder(this)
         val dialogView = layoutInflater.inflate(R.layout.dialog_pick2numbers, null)
-        dlg.setTitle(R.string.prompt_height)
-                .setView(dialogView)
+        //dlg.setTitle(R.string.prompt_height)
+        //        .setView(dialogView)
 
         val num = dialogView.findViewById<NumberPicker>(R.id.the_number)
         num!!.wrapSelectorWheel = false
@@ -227,9 +256,9 @@ class MyInfoActivity : AppCompatActivity() {
         num.maxValue = 3
 
         var x:Double = 0.0
-        if (my_height.getTag(R.string.numtag) is Double)
+     //   if (my_height.getTag(R.string.numtag) is Double)
         {
-            x = my_height.getTag(R.string.numtag) as Double
+       //     x = my_height.getTag(R.string.numtag) as Double
         }
         if (!metrik)
             x /= 2.54
@@ -260,7 +289,7 @@ class MyInfoActivity : AppCompatActivity() {
 
     fun onUnits(metrik:Boolean)
     {
-        if (my_weight.getTag(R.string.numtag) is Double)
+/*        if (my_weight.getTag(R.string.numtag) is Double)
         {
             var w:Double = my_weight.getTag(R.string.numtag) as Double
             if (!metrik)
@@ -286,6 +315,6 @@ class MyInfoActivity : AppCompatActivity() {
             else
                 s += getString(R.string.ft) + " $h " + getString(R.string.in4)
             my_height.setText(s)
-        }
+        }*/
     }
 }

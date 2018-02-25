@@ -267,4 +267,18 @@
         <item name="colorControlNormal">@color/achuInactiveGrey</item>
         <item name="colorControlActivated">@color/achuOrange</item>
     </style>
+
+    <style name="achuEditBox">
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="achuATitle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
 </resources>

@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todayEnergyTitle"
-        android:background="@drawable/achu_ovel_border"
+        android:background="@drawable/achu_oval_border"
         >
     <RatingBar
         android:id="@+id/ratingBarEnergy"
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todayWellnessTitle"
-        android:background="@drawable/achu_ovel_border"
+        android:background="@drawable/achu_oval_border"
         >
 
     <RatingBar

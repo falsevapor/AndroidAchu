@@ -319,6 +319,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         val intent = Intent(this,  MyInfoActivity::class.java)
         intent.putExtra("register", true)
         startActivity(intent)
+        finish()
     }
 
     fun onOK()

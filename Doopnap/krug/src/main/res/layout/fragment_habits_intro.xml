@@ -11,31 +11,38 @@
     <TextView
         android:layout_marginTop="48dp"
         android:id="@+id/introTitle"
+        style="@style/achuATitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/textColorPrimary"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Do you even? Bro!"/>
+        android:text="@string/habit_info_title"/>
 
     <TextView
-        android:layout_marginTop="16dp"
         android:id="@+id/introParagraph1"
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/introTitle"
-        tools:text="Do you even? Bro!"/>
+        android:text="@string/habit_info_paragraph1"/>
 
     <TextView
-        android:layout_marginTop="8dp"
         android:id="@+id/introParagraph2"
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/introParagraph1"
-        tools:text="Do you even? Bro!"/>
+        android:text="@string/habit_info_paragraph2"/>
+
+    <TextView
+        android:id="@+id/introParagraph3"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@+id/introParagraph2"
+        android:text="@string/habit_info_paragraph3"/>
 
     <Button
         android:id="@+id/btn_how_works"

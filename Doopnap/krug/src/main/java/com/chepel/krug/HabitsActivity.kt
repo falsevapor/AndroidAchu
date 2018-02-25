@@ -1,5 +1,7 @@
 package com.chepel.krug
 
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
@@ -11,10 +13,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.chepel.krug.HabitsIntroFragment.OnFragmentInteractionListener
 
 import kotlinx.android.synthetic.main.activity_habits.*
+import kotlinx.android.synthetic.main.fragment_habits.view.*
 
-class HabitsActivity : AppCompatActivity() {
+class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
 
     private val intro = HabitsIntroFragment()
 
@@ -29,26 +34,46 @@ class HabitsActivity : AppCompatActivity() {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.)))
+        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_1), getString(R.string.habit_slogan_1), getString(R.string.next)))
+        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_2), getString(R.string.habit_slogan_2), getString(R.string.next)))
+        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_3), getString(R.string.habit_slogan_3), getString(R.string.next)))
+        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_4), getString(R.string.habit_slogan_4), getString(R.string.done)))
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_habits)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(habits_toolbar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setHomeButtonEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
 
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
-
     }
 
+    override fun onStartSurvey() {
+        //val intent = Intent(this,  MainActivity::class.java)
+        //intent.putExtra("runtime", true)
+        //startActivity(intent)
+        //finish()
+    }
+    override fun onHowWorks() {
+        /*
+        val intent = Intent(this,  MainActivity::class.java)
+        intent.putExtra("runtime", true)
+        startActivity(intent)
+        finish()*/
+    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_habits, menu)
-        return true
+    override fun onSkip() {
+        val intent = Intent(this,  MainActivity::class.java)
+        intent.putExtra("runtime", true)
+        startActivity(intent)
+        finish()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -57,9 +82,9 @@ class HabitsActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-        if (id == R.id.action_settings) {
-            return true
-        }
+        //if (id == R.id.action_settings) {
+        //    return true
+        //}
 
         return super.onOptionsItemSelected(item)
     }
@@ -92,10 +117,22 @@ class HabitsActivity : AppCompatActivity() {
         var step:Int = 0
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
         {
+            val nsteps = HabitsStepFragment.texts.size
             val rootView = inflater.inflate(R.layout.fragment_habits, container, false)
-            //rootView.section_label.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
+            val text = HabitsStepFragment.texts.get(step)
+            rootView.stepTitle.text = text.title
+            rootView.stepSlogan.text = text.slogan
+            rootView.btnOK.text = text.next
+            rootView.step.text = "$step"
+            rootView.steps.text = "/$nsteps"
+            rootView.btnOK.setOnClickListener { onNext(step) }
 
             return rootView
+        }
+
+        private fun onNext(position:Int)
+        {
+
         }
 
         companion object

@@ -9,11 +9,11 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="maybe">Maybe</string>
-    <string name="notsay">Rather not to say</string>
+    <string name="notsay">Prefer not to say</string>
     <string name="done">Done</string>
 
-    <string name="later">I\'ll do this later</string>
-    <string name="doit">OK, let\'s do it</string>
+    <string name="later">I will do it later</string>
+    <string name="doit">Let\'s start</string>
 
     <!--units and stuff-->
     <string name="kg">kg</string>
@@ -124,17 +124,19 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="sign_in_excl">Sign In!</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
+    <string name="already_have_an_account">Already have an account?</string>
+
 
     <string name="title_activity_my_info">My Information</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to my info -->
+    <string name="sign_up_to_achu">Sign up to Achu</string>
     <string name="prompt_name">First name</string>
     <string name="prompt_lastname">Last name</string>
     <string name="prompt_sex">Gender</string>
@@ -148,12 +150,15 @@
         <item>Imperial</item>
         <item>Metric</item>
     </string-array>
-    <string name="prompt_height">Height</string>
-    <string name="prompt_weight">Weight</string>
     <string name="prompt_age">Year born</string>
     <string name="unspec">unspecified</string>
     <string name="numtag">numtag</string>
     <string name="num2tag">num2tag</string>
+    <string name="label_weight">Weight</string>
+    <string name="label_height">Height</string>
+    <string name="label_age">Age</string>
+    <string name="label_male">Male</string>
+    <string name="label_female">Female</string>
 
     <!--UI strings-->
     <string name="action_settings">Settings</string>
@@ -233,17 +238,19 @@
 
     <!--habits-->
     <string name="habit_casually">Casually</string>
-    <string name="how_it_works">Learn how it works</string>
+    <string name="how_it_works">Learn how Achu works</string>
 
-    <string name="habit_title_1">Do you smoke?</string>
-    <string name="habit_slogan_1">This might affect things</string>
-    <string name="habit_title_2">Do you drink?</string>
-    <string name="habit_slogan_2">This might affect things</string>
-    <string name="habit_title_3">Do you run?</string>
-    <string name="habit_slogan_3">This might affect things</string>
-    <string name="habit_title_4">Do you sleep?</string>
-    <string name="habit_slogan_4">This might affect things</string>
+    <string name="habit_info_title">Awesome!</string>
+    <string name="habit_info_paragraph1">Before we get started, we need to ask you a few questions to understand your habits better.</string>
+    <string name="habit_info_paragraph2">This will help us make more accurate sickness predictions. Your answers will not be shared with anyone.</string>
+    <string name="habit_info_paragraph3">It will not take more the 2 minutes of your time</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="habit_title_1">Health Survey</string>
+    <string name="habit_slogan_1">Do you smoke tobacco products?</string>
+    <string name="habit_title_2">Health Survey</string>
+    <string name="habit_slogan_2">Do you drink alcoholic beverages ?</string>
+    <string name="habit_title_3">Health Survey</string>
+    <string name="habit_slogan_3">Do you exercise regularly?</string>
+    <string name="habit_title_4">Health Survey</string>
+    <string name="habit_slogan_4">Do you experience high levels of stress?</string>
 </resources>
