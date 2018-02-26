@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -34,11 +35,13 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_1), getString(R.string.habit_slogan_1), getString(R.string.next)))
-        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_2), getString(R.string.habit_slogan_2), getString(R.string.next)))
-        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_3), getString(R.string.habit_slogan_3), getString(R.string.next)))
-        HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_4), getString(R.string.habit_slogan_4), getString(R.string.done)))
-
+        if (1 > HabitsStepFragment.texts.size)
+        {
+            HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_1), getString(R.string.habit_slogan_1), getString(R.string.next)))
+            HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_2), getString(R.string.habit_slogan_2), getString(R.string.next)))
+            HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_3), getString(R.string.habit_slogan_3), getString(R.string.next)))
+            HabitsStepFragment.texts.add(HabitsStepFragment.Companion.Text(getString(R.string.habit_title_4), getString(R.string.habit_slogan_4), getString(R.string.done)))
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_habits)
 
@@ -52,14 +55,11 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
 
         // Set up the ViewPager with the sections adapter.
-        container.adapter = mSectionsPagerAdapter
+        habits_viewpager.adapter = mSectionsPagerAdapter
     }
 
     override fun onStartSurvey() {
-        //val intent = Intent(this,  MainActivity::class.java)
-        //intent.putExtra("runtime", true)
-        //startActivity(intent)
-        //finish()
+        habits_viewpager.currentItem = 1
     }
     override fun onHowWorks() {
         /*
@@ -72,6 +72,15 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
     override fun onSkip() {
         val intent = Intent(this,  MainActivity::class.java)
         intent.putExtra("runtime", true)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP // To clean up all activities
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onDone() {
+        val intent = Intent(this,  MainActivity::class.java)
+        intent.putExtra("runtime", true)
+        intent.flags = Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT // To clean up all activities
         startActivity(intent)
         finish()
     }
@@ -81,6 +90,18 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
+        if (item.itemId == android.R.id.home)
+        {
+            if (0 < habits_viewpager.currentItem)
+            {
+                habits_viewpager.currentItem = habits_viewpager.currentItem - 1
+            }
+            else
+            {
+                finish()
+            }
+            return true
+        }
 
         //if (id == R.id.action_settings) {
         //    return true
@@ -103,7 +124,7 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
                 return intro
             }
 
-            return HabitsStepFragment.newInstance(position)
+            return HabitsStepFragment.newInstance(habits_viewpager, position)
         }
 
         override fun getCount(): Int
@@ -115,24 +136,41 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
     class HabitsStepFragment: Fragment()
     {
         var step:Int = 0
+        var theviewpager: ViewPager? = null
+        var mListener: OnFragmentInteractionListener? = null
+
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
         {
             val nsteps = HabitsStepFragment.texts.size
             val rootView = inflater.inflate(R.layout.fragment_habits, container, false)
-            val text = HabitsStepFragment.texts.get(step)
+            val text = HabitsStepFragment.texts.get(step-1) //0 based indexes
             rootView.stepTitle.text = text.title
             rootView.stepSlogan.text = text.slogan
             rootView.btnOK.text = text.next
             rootView.step.text = "$step"
             rootView.steps.text = "/$nsteps"
-            rootView.btnOK.setOnClickListener { onNext(step) }
+            rootView.btnOK.setOnClickListener { onNext() }
 
             return rootView
         }
 
-        private fun onNext(position:Int)
-        {
+        override fun onStart() {
+            super.onStart()
+            if (activity is OnFragmentInteractionListener)
+                mListener = activity as OnFragmentInteractionListener
+        }
 
+        private fun onNext()
+        {
+            var nextstep = step + 1
+            if (HabitsStepFragment.texts.size <= (nextstep-1))
+            {
+                mListener!!.onDone()
+            }
+            else if (null != theviewpager)
+            {
+                theviewpager!!.currentItem = nextstep
+            }
         }
 
         companion object
@@ -142,9 +180,10 @@ class HabitsActivity : AppCompatActivity(), OnFragmentInteractionListener {
             }
             var texts = ArrayList<Text>()
 
-            fun newInstance(position: Int): HabitsStepFragment {
+            fun newInstance(parent:ViewPager, position: Int): HabitsStepFragment {
                 val fragment = HabitsStepFragment()
                 fragment.step = position
+                fragment.theviewpager = parent
                 return fragment
             }
         }

@@ -126,7 +126,7 @@ class MainActivity :
         val me = My(this)
         me.load()
 
-        val goodMorning = true//intent.getBooleanExtra("goodMorning", false)
+        val goodMorning = intent.getBooleanExtra("goodMorning", false)
 
         if (goodMorning && showGoodMorning)
         {

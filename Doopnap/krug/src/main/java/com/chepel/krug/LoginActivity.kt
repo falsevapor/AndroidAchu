@@ -76,6 +76,11 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             attemptLogin()
     }
 
+    override fun onResume() {
+        super.onResume()
+        showProgress(false)
+    }
+
     private fun populateAutoComplete() {
         if (!mayRequestContacts()) {
             return
@@ -310,7 +315,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     fun onNew()
     {
-//        showProgress(false)
+        //showProgress(false)
   //      Snackbar.make(sign_in_button, "New uzver?!", Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE)/*.setAction("Action", null).*/.show()
         credentials.email = credentials.uid
         credentials.xtra = ""
@@ -319,11 +324,12 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         val intent = Intent(this,  MyInfoActivity::class.java)
         intent.putExtra("register", true)
         startActivity(intent)
-        finish()
+        //finish()
     }
 
     fun onOK()
     {
+        //showProgress(false)
         credentials.email = credentials.uid
         credentials.xtra = ""
 

@@ -24,6 +24,7 @@ class HabitsIntroFragment : Fragment() {
         fun onStartSurvey()
         fun onHowWorks()
         fun onSkip()
+        fun onDone()
     }
 
     private var mListener: OnFragmentInteractionListener? = null

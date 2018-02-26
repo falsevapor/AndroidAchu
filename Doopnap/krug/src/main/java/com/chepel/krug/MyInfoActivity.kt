@@ -33,11 +33,13 @@ class MyInfoActivity : AppCompatActivity() {
 
         btnOK.setOnClickListener {
             startActivity(Intent(this,  HabitsActivity::class.java))
-            finish()
+            //finish()
         }
 
         btn_skip.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP // To clean up all activities
+            startActivity(intent)
             finish()
         }
 
